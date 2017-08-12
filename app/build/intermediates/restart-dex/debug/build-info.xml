@@ -6,36 +6,48 @@
     density="hdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1502551508343"
+    timestamp="1502555778007"
     token="800012684932873981"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="1074" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="4" />
+        duration="0" />
     <task
         name="verifier"
-        duration="3" />
+        duration="0" />
 
-    <artifact
-        location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
-        type="SPLIT" />
     <artifact
         location="D:\AS_Projects\FireTRACK\app\build\outputs\apk\app-debug.apk"
         type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1502551101781"
+        timestamp="1502555339184"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
+            location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\AS_Projects\FireTRACK\app\build\outputs\apk\app-debug.apk"
+            type="SPLIT_MAIN" />
+        <artifact
+            location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
             location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
         <artifact
             location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
@@ -44,19 +56,7 @@
             location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-            type="SPLIT" />
-        <artifact
             location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
-            type="SPLIT" />
-        <artifact
-            location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
         <artifact
             location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
@@ -67,25 +67,19 @@
         <artifact
             location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
-        <artifact
-            location="D:\AS_Projects\FireTRACK\app\build\outputs\apk\app-debug.apk"
-            type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1502551376134"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="D:\AS_Projects\FireTRACK\app\build\outputs\apk\app-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1502551508343"
+        timestamp="1502555685707"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="D:\AS_Projects\FireTRACK\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1502555778007"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="D:\AS_Projects\FireTRACK\app\build\outputs\apk\app-debug.apk"
             type="SPLIT_MAIN" />

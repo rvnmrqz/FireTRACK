@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -40,11 +41,17 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback{
     static Marker destination_marker;
     static LatLng destinationLatlng;
     Animation anim_down;
-
     static LinearLayout loadinglayout;
-
     static LinearLayout confirmationLayout;
     Button btnAccept,btnDecline, btnCancel;
+
+    //adding of routes preview
+    ImageButton btnFullscreen;
+    ImageButton btnShowRoutesDetails;
+    Animation anim_slideLeft, anim_slideRight;
+
+     LinearLayout routesDetailsLayout,  button_extra_Layout_showDetails;
+     boolean routesDetailsIsShown = true;
 
     public Fragment_truck_map() {
         // Required empty public constructor
@@ -79,6 +86,74 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback{
             mMapView.getMapAsync(this);
         }
         confirmationButtonListener();
+
+        //addition of route details
+        btnFullscreen = (ImageButton) getActivity().findViewById(R.id.truck_imgbtnFullScreen);
+        routesDetailsLayout = (LinearLayout) getActivity().findViewById(R.id.truck_routesDetailsLayout);
+        btnShowRoutesDetails = (ImageButton) getActivity().findViewById(R.id.truck_imgbtnShowRouteDetails);
+        btnShowRoutesDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Animation counterclockwise = AnimationUtils.loadAnimation(context,R.anim.rotate_counterclock);
+                Animation clockwise = AnimationUtils.loadAnimation(context,R.anim.rotate_clockwise);
+
+                if(routesDetailsIsShown){
+                    //hide it
+                    btnShowRoutesDetails.startAnimation(clockwise);
+                    anim_slideLeft = AnimationUtils.loadAnimation(context,R.anim.slide_left);
+                    routesDetailsLayout.startAnimation(anim_slideLeft);
+                    anim_slideLeft.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+                            Log.wtf("anim_slideLeft","onAnimationStart");
+                            routesDetailsIsShown=false;
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            Log.wtf("anim_slideLeft","onAnimationEnd");
+                            routesDetailsLayout.setVisibility(View.INVISIBLE);
+                            routesDetailsIsShown=false;
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+                }else{
+                    //show it
+                    btnShowRoutesDetails.startAnimation(counterclockwise);
+                    anim_slideRight = AnimationUtils.loadAnimation(context,R.anim.slide_right);
+                    routesDetailsLayout.startAnimation(anim_slideRight);
+                    anim_slideRight.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+                            Log.wtf("anim_slideRight","onAnimationStart");
+                            routesDetailsIsShown=true;
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            Log.wtf("anim_slideRight","onAnimationEnd");
+                            routesDetailsLayout.setVisibility(View.VISIBLE);
+                            routesDetailsIsShown=true;
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+                }
+            }
+        });
+        button_extra_Layout_showDetails = (LinearLayout) getActivity().findViewById(R.id.truck_button_extra_Layout_showDetails);
+        if(routesDetailsLayout.isShown()) routesDetailsIsShown=true;
+        else  routesDetailsIsShown=false;
+
+        btnFullScreenListener();
+
     }
 
     @Override
@@ -91,12 +166,6 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback{
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
-    }
-
-    @Override
     public void onAttach(Context context) {
         Log.wtf("onAttach","Called");
         super.onAttach(context);
@@ -105,7 +174,7 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback{
 
     //PREVIEW AND CONFIRMATION
     public static void showPreviewOnMap(boolean show){
-        Activity_main_truck.showRoutesDetails(true);
+        showRoutesDetails(true);
         if(show){
            confirmationLayout.setVisibility(View.VISIBLE);
         }else{
@@ -119,7 +188,6 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback{
                 Log.wtf("confirmationListener","Button Accept is clicked");
                 Toast.makeText(getContext(),"Accept is clicked",Toast.LENGTH_SHORT).show();
                 hideConfirmationLayout();
-
                 //remove the item from the list and insert in tbl_firenotif_response
 
             }
@@ -131,7 +199,6 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback{
                 Toast.makeText(getContext(),"Decline is clicked",Toast.LENGTH_SHORT).show();
                 resetMapView();
                 hideConfirmationLayout();
-
                 //remove the item from the list and insert in tbl_firenotif_response
 
             }
@@ -194,6 +261,53 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback{
         mGooglemap.clear();
         LatLng valenzuela_center = new LatLng(14.699006, 120.983371);
         mGooglemap.animateCamera(CameraUpdateFactory.newLatLngZoom(valenzuela_center, 13.5f));
-        Activity_main_truck.showRoutesDetails(false);
+        showRoutesDetails(false);
     }
+
+
+    //addition of route details
+
+    protected void btnFullScreenListener(){
+        btnFullscreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!Activity_main_truck.fullscreen){
+                    fullScreenMap();
+                }else{
+                    //exit from fullscreen
+                    exitFullScreenMap();
+                }
+            }
+        });
+    }
+    protected void fullScreenMap(){
+        //make it fullscreen
+        Activity_main_truck.fullscreen=true;
+        btnFullscreen.setImageResource(R.drawable.ic_fullscreen_exit_black);
+        Activity_main_truck.bottomNavigation.setVisibility(View.GONE);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+    }
+    protected void exitFullScreenMap(){
+        //exit from fullscreen
+        btnFullscreen.setImageResource(R.drawable.ic_fulllscreen_black);
+        Activity_main_truck.fullscreen=false;
+        Activity_main_truck.bottomNavigation.setVisibility(View.VISIBLE);
+        Activity_main_truck.bottomNavigation.restoreBottomNavigation();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+    }
+
+    public static void showRoutesDetails(boolean show){
+        //routesDetailsIsShown=false;
+        if(show){
+            //button_extra_Layout_showDetails.setVisibility(View.VISIBLE);
+            //btnShowRoutesDetails.performClick();
+
+        }else{
+          //  button_extra_Layout_showDetails.setVisibility(View.INVISIBLE);
+           // routesDetailsLayout.setVisibility(View.INVISIBLE);
+
+        }
+    }
+
+
 }

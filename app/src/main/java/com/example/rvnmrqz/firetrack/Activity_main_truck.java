@@ -71,17 +71,11 @@ public class Activity_main_truck extends AppCompatActivity {
     public static AHBottomNavigation bottomNavigation;
     AHBottomNavigationItem item1,item2,item3;
 
-    Animation anim_slideLeft, anim_slideRight;
-
     //tab 1
-    int shownfirenotifid_in_Map;
     FrameLayout tab1;
-    ImageButton btnFullscreen;
-    static ImageButton btnShowRoutesDetails;
-    boolean fullscreen=false;
     FrameLayout frameContainer;
-    public static LinearLayout routesDetailsLayout,  button_extra_Layout_showDetails;
-    public static boolean routesDetailsIsShown = true;
+    int shownfirenotifid_in_Map;
+    public static boolean fullscreen=false;
 
     //tab 2
     RelativeLayout tab2;
@@ -126,74 +120,10 @@ public class Activity_main_truck extends AppCompatActivity {
         tab1 = (FrameLayout) findViewById(R.id.truck_tab1);
         tab2 = (RelativeLayout) findViewById(R.id.truck_tab2);
         tab3 = (RelativeLayout) findViewById(R.id.truck_tab3);
-        btnFullscreen = (ImageButton) findViewById(R.id.truck_imgbtnFullScreen);
+
         initializeBottomNav();
 
         //tab 1
-        routesDetailsLayout = (LinearLayout) findViewById(R.id.truck_routesDetailsLayout);
-        btnShowRoutesDetails = (ImageButton) findViewById(R.id.truck_imgbtnShowRouteDetails);
-        btnShowRoutesDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Animation counterclockwise = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_counterclock);
-                Animation clockwise = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_clockwise);
-
-                if(routesDetailsIsShown){
-                    //hide it
-                    btnShowRoutesDetails.startAnimation(clockwise);
-                    anim_slideLeft = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_left);
-                    routesDetailsLayout.startAnimation(anim_slideLeft);
-                    anim_slideLeft.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-                            Log.wtf("anim_slideLeft","onAnimationStart");
-                            routesDetailsIsShown=false;
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            Log.wtf("anim_slideLeft","onAnimationEnd");
-                            routesDetailsLayout.setVisibility(View.INVISIBLE);
-                            routesDetailsIsShown=false;
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-
-                        }
-                    });
-                }else{
-                    //show it
-                    btnShowRoutesDetails.startAnimation(counterclockwise);
-                    anim_slideRight = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_right);
-                    routesDetailsLayout.startAnimation(anim_slideRight);
-                    anim_slideRight.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-                            Log.wtf("anim_slideRight","onAnimationStart");
-                            routesDetailsIsShown=true;
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            Log.wtf("anim_slideRight","onAnimationEnd");
-                            routesDetailsLayout.setVisibility(View.VISIBLE);
-                            routesDetailsIsShown=true;
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-
-                        }
-                    });
-                }
-            }
-        });
-        button_extra_Layout_showDetails = (LinearLayout) findViewById(R.id.truck_button_extra_Layout_showDetails);
-        if(routesDetailsLayout.isShown()) routesDetailsIsShown=true;
-        else  routesDetailsIsShown=false;
-
-        btnFullScreenListener();
         displayFragmentMap();
 
         //tab2
@@ -292,48 +222,9 @@ public class Activity_main_truck extends AppCompatActivity {
 
 
     //TAB1
-    protected void btnFullScreenListener(){
-        btnFullscreen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!fullscreen){
-                    fullScreenMap();
-                }else{
-                    //exit from fullscreen
-                   exitFullScreenMap();
-                }
-            }
-        });
-    }
-    protected void fullScreenMap(){
-        fullscreen=true;
-        //make it fullscreen
-        btnFullscreen.setImageResource(R.drawable.ic_fullscreen_exit_black);
-        bottomNavigation.setVisibility(View.GONE);
-        getSupportActionBar().hide();
-    }
-    protected void exitFullScreenMap(){
-        btnFullscreen.setImageResource(R.drawable.ic_fulllscreen_black);
-        fullscreen=false;
-        getSupportActionBar().show();
-        bottomNavigation.setVisibility(View.VISIBLE);
-        bottomNavigation.restoreBottomNavigation();
-    }
     protected void displayFragmentMap(){
-      FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.truck_fragment_container,new Fragment_truck_map()).commit();
-    }
-    public static void showRoutesDetails(boolean show){
-        routesDetailsIsShown=false;
-        if(show){
-            button_extra_Layout_showDetails.setVisibility(View.VISIBLE);
-            btnShowRoutesDetails.performClick();
-
-        }else{
-            button_extra_Layout_showDetails.setVisibility(View.INVISIBLE);
-            routesDetailsLayout.setVisibility(View.INVISIBLE);
-
-        }
     }
 
     //************************************************************
@@ -596,7 +487,6 @@ public class Activity_main_truck extends AppCompatActivity {
                     String parts[] = report_coordinates_list.get(position).trim().split(",");
                     Double latitude = Double.parseDouble(parts[0]);
                     Double longtitude = Double.parseDouble(parts[1]);
-
                     bottomNavigation.setCurrentItem(0);
                     Fragment_truck_map.showPreviewOnMap(true);
                     Fragment_truck_map.addDestinationmarker(new LatLng(latitude,longtitude),"Fire Location",report_coordinates_list.get(position));
@@ -824,7 +714,7 @@ public class Activity_main_truck extends AppCompatActivity {
             case 0:
                 //map
                 if(fullscreen){
-                    exitFullScreenMap();
+                    //exitFullScreenMap();
                 }else{
                     new AlertDialog.Builder(this)
                             .setTitle("Closing")
