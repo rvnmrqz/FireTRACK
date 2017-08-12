@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:2:1-78:12
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:2:1-84:12
 	package
 		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:3:5-44
 		INJECTED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml
@@ -31,11 +31,7 @@ ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:8:5-81
 		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:8:22-78
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:9:5-79
-MERGED from [com.google.android.gms:play-services-ads:8.3.0] C:\Users\arvin\.android\build-cache\d179c2b39cbe8f9a06398d7da9eef0f9b64ecf54\output\AndroidManifest.xml:21:5-78
-MERGED from [com.google.android.gms:play-services-analytics:8.3.0] C:\Users\arvin\.android\build-cache\9637ce698423bbfb7c52a9a5f3b51493c5de9705\output\AndroidManifest.xml:22:5-79
-MERGED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:22:5-79
-MERGED from [com.google.android.gms:play-services-nearby:8.3.0] C:\Users\arvin\.android\build-cache\8bea5a594ff91eb41dbb3a84fc35fca433d39efb\output\AndroidManifest.xml:19:5-79
-MERGED from [com.google.android.gms:play-services-maps:8.3.0] C:\Users\arvin\.android\build-cache\bd76fa3a66678201091fb9a36badb9036e35b688\output\AndroidManifest.xml:20:5-78
+MERGED from [com.google.android.gms:play-services-maps:8.4.0] C:\Users\arvin\.android\build-cache\fc9bec2e214aec37536f71dc86303b2041fe3e81\output\AndroidManifest.xml:20:5-78
 	android:name
 		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:9:22-76
 uses-permission#android.permission.ACCESS_FINE_LOCATION
@@ -48,13 +44,8 @@ ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:11:5-81
 		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:11:22-78
 uses-permission#android.permission.INTERNET
 ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:12:5-67
-MERGED from [com.google.android.gms:play-services-ads:8.3.0] C:\Users\arvin\.android\build-cache\d179c2b39cbe8f9a06398d7da9eef0f9b64ecf54\output\AndroidManifest.xml:20:5-66
-MERGED from [com.google.android.gms:play-services-analytics:8.3.0] C:\Users\arvin\.android\build-cache\9637ce698423bbfb7c52a9a5f3b51493c5de9705\output\AndroidManifest.xml:21:5-67
-MERGED from [com.google.android.gms:play-services-appinvite:8.3.0] C:\Users\arvin\.android\build-cache\f81fc5a34382ad8781aeee3c41e4c61053336481\output\AndroidManifest.xml:19:5-67
-MERGED from [com.google.android.gms:play-services-gcm:8.3.0] C:\Users\arvin\.android\build-cache\663c01741fab5183cc5d3e2305ec11796b66980d\output\AndroidManifest.xml:22:5-67
-MERGED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:21:5-67
-MERGED from [com.google.android.gms:play-services-wallet:8.3.0] C:\Users\arvin\.android\build-cache\c920939c1f59172ffa2de7da0e3b54201901636a\output\AndroidManifest.xml:20:5-66
-MERGED from [com.google.android.gms:play-services-maps:8.3.0] C:\Users\arvin\.android\build-cache\bd76fa3a66678201091fb9a36badb9036e35b688\output\AndroidManifest.xml:21:5-66
+MERGED from [com.akexorcist:googledirectionlibrary:1.0.4] C:\Users\arvin\.android\build-cache\00bd0447f46061619948a27a9a3c5e327ea20cfd\output\AndroidManifest.xml:11:5-67
+MERGED from [com.google.android.gms:play-services-maps:8.4.0] C:\Users\arvin\.android\build-cache\fc9bec2e214aec37536f71dc86303b2041fe3e81\output\AndroidManifest.xml:21:5-66
 	android:name
 		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:12:22-64
 uses-permission#android.permission.VIBRATE
@@ -65,34 +56,17 @@ uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
 ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:14:5-81
 	android:name
 		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:14:22-78
+uses-feature#0x00020000
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:17:5-19:35
+MERGED from [com.google.android.gms:play-services-maps:8.4.0] C:\Users\arvin\.android\build-cache\fc9bec2e214aec37536f71dc86303b2041fe3e81\output\AndroidManifest.xml:22:5-24:33
+	android:glEsVersion
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:18:9-41
+	android:required
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:19:9-32
 application
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:16:5-73:19
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:21:5-82:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\arvin\.android\build-cache\8a5d3f6bef2971f6128c26df94ba6be7ff8308f2\output\AndroidManifest.xml:9:5-20
 MERGED from [com.android.volley:volley:1.0.0] C:\Users\arvin\.android\build-cache\5b417a5437cb5df6c07ca16692c1314ecae33c5f\output\AndroidManifest.xml:9:5-20
-MERGED from [com.google.android.gms:play-services:8.3.0] C:\Users\arvin\.android\build-cache\56847d96659c150c79be9b5b09d3a1a9ce4a1974\output\AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-ads:8.3.0] C:\Users\arvin\.android\build-cache\d179c2b39cbe8f9a06398d7da9eef0f9b64ecf54\output\AndroidManifest.xml:24:5-32:19
-MERGED from [com.google.android.gms:play-services-analytics:8.3.0] C:\Users\arvin\.android\build-cache\9637ce698423bbfb7c52a9a5f3b51493c5de9705\output\AndroidManifest.xml:24:5-20
-MERGED from [com.google.android.gms:play-services-appindexing:8.3.0] C:\Users\arvin\.android\build-cache\a514ffe5a2be1586cfefdc3fad0d8f760940310a\output\AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-appinvite:8.3.0] C:\Users\arvin\.android\build-cache\f81fc5a34382ad8781aeee3c41e4c61053336481\output\AndroidManifest.xml:20:5-20
-MERGED from [com.google.android.gms:play-services-appstate:8.3.0] C:\Users\arvin\.android\build-cache\fd8db84ed273e24fe6a4240e5769be02bd9cbcb9\output\AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-auth:8.3.0] C:\Users\arvin\.android\build-cache\afe9da56f88aa3bfcf254ccdc48f572a58c30ca9\output\AndroidManifest.xml:20:5-25:19
-MERGED from [com.google.android.gms:play-services-cast:8.3.0] C:\Users\arvin\.android\build-cache\2e67e6fecfec02fb4d322169106262fadef86e98\output\AndroidManifest.xml:19:5-20
-MERGED from [com.android.support:mediarouter-v7:22.2.0] C:\Users\arvin\.android\build-cache\6e578c2e169d7b99f9d803c89d38ff022671bb96\output\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-fitness:8.3.0] C:\Users\arvin\.android\build-cache\0ef8ae2fe7590e697db88fc685226bafe0cd0049\output\AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-games:8.3.0] C:\Users\arvin\.android\build-cache\095c543823d63b4836602b4302e3a69bd71d8f57\output\AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-drive:8.3.0] C:\Users\arvin\.android\build-cache\4db648a1c8a46a0e77e01c124b6ec01a78e97ac0\output\AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-gcm:8.3.0] C:\Users\arvin\.android\build-cache\663c01741fab5183cc5d3e2305ec11796b66980d\output\AndroidManifest.xml:24:5-20
-MERGED from [com.google.android.gms:play-services-location:8.3.0] C:\Users\arvin\.android\build-cache\97405a0507cda3678150b652401fe23611547bb5\output\AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:26:5-46:19
-MERGED from [com.google.android.gms:play-services-nearby:8.3.0] C:\Users\arvin\.android\build-cache\8bea5a594ff91eb41dbb3a84fc35fca433d39efb\output\AndroidManifest.xml:20:5-20
-MERGED from [com.google.android.gms:play-services-panorama:8.3.0] C:\Users\arvin\.android\build-cache\93d3515da62f3d44b2e34058ae6bbdd64c021e03\output\AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-plus:8.3.0] C:\Users\arvin\.android\build-cache\7d4b405a587d8a1f14be6b061cee6d3049708775\output\AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-safetynet:8.3.0] C:\Users\arvin\.android\build-cache\b355dfd4008102e5f55e221d650f16b0431b7d67\output\AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-vision:8.3.0] C:\Users\arvin\.android\build-cache\504344c9bc6c1f5e7e32e7ecabff8b2455b2795f\output\AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-identity:8.3.0] C:\Users\arvin\.android\build-cache\431348f49ec30eb5c6c84071a6c15ef2579a8865\output\AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-maps:8.3.0] C:\Users\arvin\.android\build-cache\bd76fa3a66678201091fb9a36badb9036e35b688\output\AndroidManifest.xml:27:5-20
-MERGED from [com.google.android.gms:play-services-wearable:8.3.0] C:\Users\arvin\.android\build-cache\e9dfea7ebd2d199d1ca913d6a5ee9d6b95b4828f\output\AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.3.0] C:\Users\arvin\.android\build-cache\b38a425997334950a7cd89f7cf22cceb6cf96ae9\output\AndroidManifest.xml:20:5-24:19
 MERGED from [com.ms-square:expandableTextView:0.1.4] C:\Users\arvin\.android\build-cache\797a494c2b1d740534b1d69368fab6e66c1081df\output\AndroidManifest.xml:9:5-20
 MERGED from [com.aurelhubert:ahbottomnavigation:2.0.6] C:\Users\arvin\.android\build-cache\4aed8df9d6988782d60e51faca6ec2fcae30a100\output\AndroidManifest.xml:11:5-20
 MERGED from [com.android.support:design:25.3.1] C:\Users\arvin\.android\build-cache\24e0a27d08ca75b70886379bd315ef2f9f94d76c\output\AndroidManifest.xml:29:5-20
@@ -100,6 +74,8 @@ MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\arvin\.android\bu
 MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\arvin\.android\build-cache\30c5629df0c179730bde6181dcd2b4d0140d2357\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\arvin\.android\build-cache\178552c6189dc7319e2e089ad8d2fa74101f5392\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:transition:25.3.1] C:\Users\arvin\.android\build-cache\3b878de14e53d893940afec0ed393a4b7aa05553\output\AndroidManifest.xml:26:5-20
+MERGED from [com.google.android.gms:play-services-maps:8.4.0] C:\Users\arvin\.android\build-cache\fc9bec2e214aec37536f71dc86303b2041fe3e81\output\AndroidManifest.xml:27:5-20
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] C:\Users\arvin\.android\build-cache\ae00380e9018572a1fc589a80d0f69b3f18c07d3\output\AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:25.3.1] C:\Users\arvin\.android\build-cache\def070073c16380b57323cffd4e225a72b8d71a5\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\arvin\.android\build-cache\75c2db35e21b14148734c6ee97bc44168573f4e4\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\arvin\.android\build-cache\c67ac38a662be37b471e358c1f27c0a6eef1e126\output\AndroidManifest.xml:29:5-20
@@ -107,142 +83,116 @@ MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\arvin\.android
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\arvin\.android\build-cache\e2f8e10dd47f8f994f6726ba39f67543898e4e46\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\arvin\.android\build-cache\e940079e1536dbed4bf0b19bac090459ca6a3a61\output\AndroidManifest.xml:29:5-20
 	android:label
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:19:9-41
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:24:9-41
 	android:supportsRtl
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:21:9-35
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:26:9-35
 	android:roundIcon
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:20:9-54
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:25:9-54
 	android:allowBackup
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:17:9-35
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:22:9-35
 	android:icon
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:18:9-38
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:23:9-38
 	android:theme
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:22:9-40
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:27:9-40
 activity#com.example.rvnmrqz.firetrack.SplashScreen
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:23:9-31:20
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:28:9-36:20
 	android:screenOrientation
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:25:13-49
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:30:13-49
 	android:name
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:24:13-41
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:29:13-41
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:26:13-30:29
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:31:13-35:29
 action#android.intent.action.MAIN
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:27:17-69
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:32:17-69
 	android:name
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:27:25-66
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:32:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:29:17-77
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:34:17-77
 	android:name
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:29:27-74
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:34:27-74
 activity#com.example.rvnmrqz.firetrack.Activity_main_user
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:32:9-36:52
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:37:9-41:52
 	android:screenOrientation
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:36:13-49
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:41:13-49
 	android:label
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:34:13-45
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:39:13-45
 	android:launchMode
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:35:13-43
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:40:13-43
 	android:name
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:33:13-47
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:38:13-47
 activity#com.example.rvnmrqz.firetrack.Activity_Login
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:37:9-40:52
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:42:9-45:52
 	android:screenOrientation
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:40:13-49
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:45:13-49
 	android:label
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:39:13-34
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:44:13-34
 	android:name
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:38:13-43
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:43:13-43
 activity#com.example.rvnmrqz.firetrack.TestActivity
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:41:9-50
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:46:9-50
 	android:name
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:41:19-47
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:46:19-47
 activity#com.example.rvnmrqz.firetrack.Activity_DatabaseManager
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:42:9-44:59
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:47:9-49:59
 	android:theme
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:44:13-57
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:49:13-57
 	android:name
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:43:13-53
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:48:13-53
 activity#com.example.rvnmrqz.firetrack.Activity_User_Settings
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:45:9-48:51
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:50:9-53:51
 	android:screenOrientation
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:48:13-49
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:53:13-49
 	android:label
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:47:13-37
-	android:name
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:46:13-51
-service#com.example.rvnmrqz.firetrack.Service_Notification
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:50:9-52:40
-	android:exported
 		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:52:13-37
 	android:name
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:51:13-49
-receiver#com.example.rvnmrqz.firetrack.RebootReceiver
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:54:9-63:20
-	android:enabled
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:56:13-35
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:51:13-51
+service#com.example.rvnmrqz.firetrack.Service_Notification
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:55:9-57:40
 	android:exported
 		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:57:13-37
 	android:name
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:55:13-43
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:56:13-49
+receiver#com.example.rvnmrqz.firetrack.RebootReceiver
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:59:9-68:20
+	android:enabled
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:61:13-35
+	android:exported
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:62:13-37
+	android:name
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:60:13-43
 intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.category.DEFAULT
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:58:13-62:29
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:63:13-67:29
 category#android.intent.category.DEFAULT
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:59:17-76
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:64:17-76
 	android:name
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:59:27-73
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:64:27-73
 action#android.intent.action.BOOT_COMPLETED
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:61:17-79
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:66:17-79
 	android:name
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:61:25-76
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:66:25-76
 activity#com.example.rvnmrqz.firetrack.Activity_main_truck
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:65:9-67:61
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:70:9-72:61
 	android:screenOrientation
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:67:13-49
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:72:13-49
 	android:name
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:66:13-48
-meta-data#com.google.android.maps.v2.API_KEY
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:70:9-72:71
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:71:13-48
+meta-data#com.google.android.gms.version
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:75:9-77:69
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] C:\Users\arvin\.android\build-cache\ae00380e9018572a1fc589a80d0f69b3f18c07d3\output\AndroidManifest.xml:21:9-23:69
 	android:value
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:72:13-68
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:77:13-66
 	android:name
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:71:13-62
-uses-feature#0x00020000
-ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:75:5-77:35
-MERGED from [com.google.android.gms:play-services-maps:8.3.0] C:\Users\arvin\.android\build-cache\bd76fa3a66678201091fb9a36badb9036e35b688\output\AndroidManifest.xml:22:5-24:33
-	android:glEsVersion
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:76:9-41
-	android:required
-		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:77:9-32
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:76:13-58
+meta-data#com.google.android.maps.v2.API_KEY
+ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:79:9-81:71
+	android:value
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:81:13-68
+	android:name
+		ADDED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml:80:13-62
 uses-sdk
 INJECTED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\arvin\.android\build-cache\8a5d3f6bef2971f6128c26df94ba6be7ff8308f2\output\AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.volley:volley:1.0.0] C:\Users\arvin\.android\build-cache\5b417a5437cb5df6c07ca16692c1314ecae33c5f\output\AndroidManifest.xml:7:5-43
-MERGED from [com.google.android.gms:play-services:8.3.0] C:\Users\arvin\.android\build-cache\56847d96659c150c79be9b5b09d3a1a9ce4a1974\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-ads:8.3.0] C:\Users\arvin\.android\build-cache\d179c2b39cbe8f9a06398d7da9eef0f9b64ecf54\output\AndroidManifest.xml:23:5-42
-MERGED from [com.google.android.gms:play-services-analytics:8.3.0] C:\Users\arvin\.android\build-cache\9637ce698423bbfb7c52a9a5f3b51493c5de9705\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-appindexing:8.3.0] C:\Users\arvin\.android\build-cache\a514ffe5a2be1586cfefdc3fad0d8f760940310a\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-appinvite:8.3.0] C:\Users\arvin\.android\build-cache\f81fc5a34382ad8781aeee3c41e4c61053336481\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-appstate:8.3.0] C:\Users\arvin\.android\build-cache\fd8db84ed273e24fe6a4240e5769be02bd9cbcb9\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-auth:8.3.0] C:\Users\arvin\.android\build-cache\afe9da56f88aa3bfcf254ccdc48f572a58c30ca9\output\AndroidManifest.xml:18:5-43
-MERGED from [com.google.android.gms:play-services-cast:8.3.0] C:\Users\arvin\.android\build-cache\2e67e6fecfec02fb4d322169106262fadef86e98\output\AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:mediarouter-v7:22.2.0] C:\Users\arvin\.android\build-cache\6e578c2e169d7b99f9d803c89d38ff022671bb96\output\AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-fitness:8.3.0] C:\Users\arvin\.android\build-cache\0ef8ae2fe7590e697db88fc685226bafe0cd0049\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-games:8.3.0] C:\Users\arvin\.android\build-cache\095c543823d63b4836602b4302e3a69bd71d8f57\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-drive:8.3.0] C:\Users\arvin\.android\build-cache\4db648a1c8a46a0e77e01c124b6ec01a78e97ac0\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-gcm:8.3.0] C:\Users\arvin\.android\build-cache\663c01741fab5183cc5d3e2305ec11796b66980d\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-location:8.3.0] C:\Users\arvin\.android\build-cache\97405a0507cda3678150b652401fe23611547bb5\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-nearby:8.3.0] C:\Users\arvin\.android\build-cache\8bea5a594ff91eb41dbb3a84fc35fca433d39efb\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-panorama:8.3.0] C:\Users\arvin\.android\build-cache\93d3515da62f3d44b2e34058ae6bbdd64c021e03\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-plus:8.3.0] C:\Users\arvin\.android\build-cache\7d4b405a587d8a1f14be6b061cee6d3049708775\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-safetynet:8.3.0] C:\Users\arvin\.android\build-cache\b355dfd4008102e5f55e221d650f16b0431b7d67\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-vision:8.3.0] C:\Users\arvin\.android\build-cache\504344c9bc6c1f5e7e32e7ecabff8b2455b2795f\output\AndroidManifest.xml:4:5-42
-MERGED from [com.google.android.gms:play-services-wallet:8.3.0] C:\Users\arvin\.android\build-cache\c920939c1f59172ffa2de7da0e3b54201901636a\output\AndroidManifest.xml:19:5-42
-MERGED from [com.google.android.gms:play-services-identity:8.3.0] C:\Users\arvin\.android\build-cache\431348f49ec30eb5c6c84071a6c15ef2579a8865\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-maps:8.3.0] C:\Users\arvin\.android\build-cache\bd76fa3a66678201091fb9a36badb9036e35b688\output\AndroidManifest.xml:26:5-42
-MERGED from [com.google.android.gms:play-services-wearable:8.3.0] C:\Users\arvin\.android\build-cache\e9dfea7ebd2d199d1ca913d6a5ee9d6b95b4828f\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:8.3.0] C:\Users\arvin\.android\build-cache\d86a4a6734a34bb9748dee8ec90a91142ad23e53\output\AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:8.3.0] C:\Users\arvin\.android\build-cache\b38a425997334950a7cd89f7cf22cceb6cf96ae9\output\AndroidManifest.xml:18:5-42
 MERGED from [com.ms-square:expandableTextView:0.1.4] C:\Users\arvin\.android\build-cache\797a494c2b1d740534b1d69368fab6e66c1081df\output\AndroidManifest.xml:5:5-7:41
 MERGED from [com.aurelhubert:ahbottomnavigation:2.0.6] C:\Users\arvin\.android\build-cache\4aed8df9d6988782d60e51faca6ec2fcae30a100\output\AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:design:25.3.1] C:\Users\arvin\.android\build-cache\24e0a27d08ca75b70886379bd315ef2f9f94d76c\output\AndroidManifest.xml:21:5-23:62
@@ -251,6 +201,10 @@ MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\arvin
 MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\arvin\.android\build-cache\178552c6189dc7319e2e089ad8d2fa74101f5392\output\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\arvin\.android\build-cache\a418cb2eaef4e8b7f7fe4f5a29674c00b123571d\output\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:transition:25.3.1] C:\Users\arvin\.android\build-cache\3b878de14e53d893940afec0ed393a4b7aa05553\output\AndroidManifest.xml:20:5-44
+MERGED from [com.akexorcist:googledirectionlibrary:1.0.4] C:\Users\arvin\.android\build-cache\00bd0447f46061619948a27a9a3c5e327ea20cfd\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.gms:play-services-maps:8.4.0] C:\Users\arvin\.android\build-cache\fc9bec2e214aec37536f71dc86303b2041fe3e81\output\AndroidManifest.xml:26:5-42
+MERGED from [com.google.android.gms:play-services-base:8.4.0] C:\Users\arvin\.android\build-cache\fbfbcd99aa16a3939145edb62759e5ea7efd8288\output\AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] C:\Users\arvin\.android\build-cache\ae00380e9018572a1fc589a80d0f69b3f18c07d3\output\AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:25.3.1] C:\Users\arvin\.android\build-cache\def070073c16380b57323cffd4e225a72b8d71a5\output\AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\arvin\.android\build-cache\75c2db35e21b14148734c6ee97bc44168573f4e4\output\AndroidManifest.xml:21:5-23:60
 MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\arvin\.android\build-cache\c67ac38a662be37b471e358c1f27c0a6eef1e126\output\AndroidManifest.xml:21:5-23:63
@@ -265,80 +219,6 @@ MERGED from [com.android.support:support-compat:25.3.1] C:\Users\arvin\.android\
 	android:minSdkVersion
 		INJECTED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml
 		INJECTED from D:\AS_Projects\FireTRACK\app\src\main\AndroidManifest.xml
-activity#com.google.android.gms.ads.AdActivity
-ADDED from [com.google.android.gms:play-services-ads:8.3.0] C:\Users\arvin\.android\build-cache\d179c2b39cbe8f9a06398d7da9eef0f9b64ecf54\output\AndroidManifest.xml:26:9-29:64
-	android:configChanges
-		ADDED from [com.google.android.gms:play-services-ads:8.3.0] C:\Users\arvin\.android\build-cache\d179c2b39cbe8f9a06398d7da9eef0f9b64ecf54\output\AndroidManifest.xml:28:13-122
-	android:theme
-		ADDED from [com.google.android.gms:play-services-ads:8.3.0] C:\Users\arvin\.android\build-cache\d179c2b39cbe8f9a06398d7da9eef0f9b64ecf54\output\AndroidManifest.xml:29:13-61
-	android:name
-		ADDED from [com.google.android.gms:play-services-ads:8.3.0] C:\Users\arvin\.android\build-cache\d179c2b39cbe8f9a06398d7da9eef0f9b64ecf54\output\AndroidManifest.xml:27:13-65
-activity#com.google.android.gms.ads.purchase.InAppPurchaseActivity
-ADDED from [com.google.android.gms:play-services-ads:8.3.0] C:\Users\arvin\.android\build-cache\d179c2b39cbe8f9a06398d7da9eef0f9b64ecf54\output\AndroidManifest.xml:30:9-31:52
-	android:theme
-		ADDED from [com.google.android.gms:play-services-ads:8.3.0] C:\Users\arvin\.android\build-cache\d179c2b39cbe8f9a06398d7da9eef0f9b64ecf54\output\AndroidManifest.xml:31:13-50
-	android:name
-		ADDED from [com.google.android.gms:play-services-ads:8.3.0] C:\Users\arvin\.android\build-cache\d179c2b39cbe8f9a06398d7da9eef0f9b64ecf54\output\AndroidManifest.xml:30:19-91
-activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
-ADDED from [com.google.android.gms:play-services-auth:8.3.0] C:\Users\arvin\.android\build-cache\afe9da56f88aa3bfcf254ccdc48f572a58c30ca9\output\AndroidManifest.xml:21:9-24:46
-	android:excludeFromRecents
-		ADDED from [com.google.android.gms:play-services-auth:8.3.0] C:\Users\arvin\.android\build-cache\afe9da56f88aa3bfcf254ccdc48f572a58c30ca9\output\AndroidManifest.xml:23:19-52
-	android:exported
-		ADDED from [com.google.android.gms:play-services-auth:8.3.0] C:\Users\arvin\.android\build-cache\afe9da56f88aa3bfcf254ccdc48f572a58c30ca9\output\AndroidManifest.xml:24:19-43
-	android:theme
-		ADDED from [com.google.android.gms:play-services-auth:8.3.0] C:\Users\arvin\.android\build-cache\afe9da56f88aa3bfcf254ccdc48f572a58c30ca9\output\AndroidManifest.xml:22:19-78
-	android:name
-		ADDED from [com.google.android.gms:play-services-auth:8.3.0] C:\Users\arvin\.android\build-cache\afe9da56f88aa3bfcf254ccdc48f572a58c30ca9\output\AndroidManifest.xml:21:19-72
-uses-permission#com.google.android.c2dm.permission.RECEIVE
-ADDED from [com.google.android.gms:play-services-gcm:8.3.0] C:\Users\arvin\.android\build-cache\663c01741fab5183cc5d3e2305ec11796b66980d\output\AndroidManifest.xml:21:5-82
-	android:name
-		ADDED from [com.google.android.gms:play-services-gcm:8.3.0] C:\Users\arvin\.android\build-cache\663c01741fab5183cc5d3e2305ec11796b66980d\output\AndroidManifest.xml:21:22-79
-uses-permission#android.permission.WAKE_LOCK
-ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:24:5-67
-	android:name
-		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:24:22-65
-provider#com.google.android.gms.measurement.AppMeasurementContentProvider
-ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:28:7-31:37
-	android:authorities
-		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:29:11-76
-	android:exported
-		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:31:11-35
-	android:name
-		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:30:11-90
-receiver#com.google.android.gms.measurement.AppMeasurementReceiver
-ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:33:7-39:18
-	android:enabled
-		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:35:11-33
-	android:name
-		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:34:11-83
-intent-filter#com.google.android.gms.measurement.UPLOAD
-ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:36:9-38:25
-action#com.google.android.gms.measurement.UPLOAD
-ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:37:11-77
-	android:name
-		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:37:19-75
-service#com.google.android.gms.measurement.AppMeasurementService
-ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:41:7-44:37
-	android:enabled
-		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:43:11-33
-	android:exported
-		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:44:11-35
-	android:name
-		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] C:\Users\arvin\.android\build-cache\8e395826aa959daae28daf46a607ba5ee438d444\output\AndroidManifest.xml:42:11-82
-uses-permission#android.permission.GET_ACCOUNTS
-ADDED from [com.google.android.gms:play-services-wallet:8.3.0] C:\Users\arvin\.android\build-cache\c920939c1f59172ffa2de7da0e3b54201901636a\output\AndroidManifest.xml:21:5-70
-	android:name
-		ADDED from [com.google.android.gms:play-services-wallet:8.3.0] C:\Users\arvin\.android\build-cache\c920939c1f59172ffa2de7da0e3b54201901636a\output\AndroidManifest.xml:21:22-68
-uses-permission#android.permission.USE_CREDENTIALS
-ADDED from [com.google.android.gms:play-services-wallet:8.3.0] C:\Users\arvin\.android\build-cache\c920939c1f59172ffa2de7da0e3b54201901636a\output\AndroidManifest.xml:22:5-73
-	android:name
-		ADDED from [com.google.android.gms:play-services-wallet:8.3.0] C:\Users\arvin\.android\build-cache\c920939c1f59172ffa2de7da0e3b54201901636a\output\AndroidManifest.xml:22:22-71
-meta-data#com.google.android.gms.version
-ADDED from [com.google.android.gms:play-services-basement:8.3.0] C:\Users\arvin\.android\build-cache\b38a425997334950a7cd89f7cf22cceb6cf96ae9\output\AndroidManifest.xml:21:9-23:69
-	android:value
-		ADDED from [com.google.android.gms:play-services-basement:8.3.0] C:\Users\arvin\.android\build-cache\b38a425997334950a7cd89f7cf22cceb6cf96ae9\output\AndroidManifest.xml:23:13-66
-	android:name
-		ADDED from [com.google.android.gms:play-services-basement:8.3.0] C:\Users\arvin\.android\build-cache\b38a425997334950a7cd89f7cf22cceb6cf96ae9\output\AndroidManifest.xml:22:13-58
 meta-data#android.support.VERSION
 ADDED from [com.android.support:design:25.3.1] C:\Users\arvin\.android\build-cache\24e0a27d08ca75b70886379bd315ef2f9f94d76c\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\arvin\.android\build-cache\ba61a4fa1c8c1a5df8575b7bf7340b88ad497bfc\output\AndroidManifest.xml:25:5-27:34

@@ -15,6 +15,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -28,8 +29,10 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 
 import java.nio.DoubleBuffer;
+import java.util.ArrayList;
 
 
 public class Fragment_truck_map extends Fragment implements OnMapReadyCallback{
@@ -49,9 +52,11 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback{
     ImageButton btnFullscreen;
     ImageButton btnShowRoutesDetails;
     Animation anim_slideLeft, anim_slideRight;
-
      LinearLayout routesDetailsLayout,  button_extra_Layout_showDetails;
      boolean routesDetailsIsShown = true;
+
+
+
 
     public Fragment_truck_map() {
         // Required empty public constructor
@@ -266,7 +271,6 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback{
 
 
     //addition of route details
-
     protected void btnFullScreenListener(){
         btnFullscreen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -295,7 +299,6 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback{
         Activity_main_truck.bottomNavigation.restoreBottomNavigation();
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
     }
-
     public static void showRoutesDetails(boolean show){
         //routesDetailsIsShown=false;
         if(show){
@@ -305,9 +308,11 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback{
         }else{
           //  button_extra_Layout_showDetails.setVisibility(View.INVISIBLE);
            // routesDetailsLayout.setVisibility(View.INVISIBLE);
-
         }
     }
+
+    //directions
+
 
 
 }

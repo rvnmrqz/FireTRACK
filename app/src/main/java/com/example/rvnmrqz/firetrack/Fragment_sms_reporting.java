@@ -47,7 +47,7 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.ArrayList;
 
 import static android.content.Context.LOCATION_SERVICE;
-import static com.google.android.gms.internal.zzip.runOnUiThread;
+//import static com.google.android.gms.internal.zzip.runOnUiThread;
 
 /**
  * Created by Rvn Mrqz on 2/19/2017.
@@ -637,8 +637,7 @@ public class Fragment_sms_reporting extends Fragment {
             super.onPostExecute(index);
             if(index!=-1){
                 Log.wtf("onPostExecute","worker is done, index: "+index);
-                runOnUiThread(new Runnable() {
-                    public void run() {
+
                         showLoadingLayout(false,false,null);
                         barangay_local_id = index;
                         number = b_cell.get(index);
@@ -654,13 +653,13 @@ public class Fragment_sms_reporting extends Fragment {
                             number=null;
                         }
                         txtBarangayName.setText(b_name.get(index));
-                    }
-                });
+            }
+
 
                 //hide the loading layout
                 //show the barangay name in textview and its number
 
-            }
+
         }
 
         private int findNearestPoint(){

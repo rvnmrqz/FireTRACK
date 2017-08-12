@@ -69,7 +69,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static android.content.Context.LOCATION_SERVICE;
-import static com.google.android.gms.internal.zzip.runOnUiThread;
+//import static com.google.android.gms.internal.zzip.runOnUiThread;
 
 
 /**
@@ -817,13 +817,9 @@ public class Fragment_online_reporting extends Fragment {
             super.onPostExecute(index);
             if(index!=-1){
                 Log.wtf("onPostExecute","worker is done, index: "+index);
-                runOnUiThread(new Runnable() {
-                    public void run() {
                         showLoadingLayout(true,false,"Ready to Send");
                         barangay_local_id = b_local_id.get(index);
                         Toast.makeText(getActivity(), "You can now send your report", Toast.LENGTH_SHORT).show();
-                    }
-                });
             }
         }
 
