@@ -1,0 +1,94 @@
+[
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_out.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\24e0a27d08ca75b70886379bd315ef2f9f94d76c\\output\\res\\anim\\design_snackbar_out.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\ba61a4fa1c8c1a5df8575b7bf7340b88ad497bfc\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\rotate_clockwise.xml",
+        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\anim\\rotate_clockwise.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\ba61a4fa1c8c1a5df8575b7bf7340b88ad497bfc\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\ba61a4fa1c8c1a5df8575b7bf7340b88ad497bfc\\output\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\rotate_counterclock.xml",
+        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\anim\\rotate_counterclock.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\slide_left.xml",
+        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\anim\\slide_left.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\ba61a4fa1c8c1a5df8575b7bf7340b88ad497bfc\\output\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\ba61a4fa1c8c1a5df8575b7bf7340b88ad497bfc\\output\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_in.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\24e0a27d08ca75b70886379bd315ef2f9f94d76c\\output\\res\\anim\\design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\slide_right.xml",
+        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\anim\\slide_right.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\ba61a4fa1c8c1a5df8575b7bf7340b88ad497bfc\\output\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\bounce.xml",
+        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\anim\\bounce.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\slide_down.xml",
+        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\anim\\slide_down.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\slide_up.xml",
+        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\anim\\slide_up.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_out.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\24e0a27d08ca75b70886379bd315ef2f9f94d76c\\output\\res\\anim\\design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\ba61a4fa1c8c1a5df8575b7bf7340b88ad497bfc\\output\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\ba61a4fa1c8c1a5df8575b7bf7340b88ad497bfc\\output\\res\\anim\\abc_fade_out.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\ba61a4fa1c8c1a5df8575b7bf7340b88ad497bfc\\output\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_fab_out.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\24e0a27d08ca75b70886379bd315ef2f9f94d76c\\output\\res\\anim\\design_fab_out.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\ba61a4fa1c8c1a5df8575b7bf7340b88ad497bfc\\output\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_fab_in.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\24e0a27d08ca75b70886379bd315ef2f9f94d76c\\output\\res\\anim\\design_fab_in.xml"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_in.xml",
+        "source": "C:\\Users\\arvin\\.android\\build-cache\\24e0a27d08ca75b70886379bd315ef2f9f94d76c\\output\\res\\anim\\design_snackbar_in.xml"
+    }
+]

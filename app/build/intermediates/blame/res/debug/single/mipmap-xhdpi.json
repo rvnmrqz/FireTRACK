@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\ic_launcher.png",
+        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\ic_exit_fullscreen.png",
+        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\mipmap-xhdpi\\ic_exit_fullscreen.png"
+    },
+    {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\ic_launcher_round.png",
+        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    }
+]
