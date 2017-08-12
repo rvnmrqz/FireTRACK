@@ -350,7 +350,6 @@ public class Activity_Login extends AppCompatActivity {
                                 } else if (volleyError instanceof NoConnectionError) {
                                     message = "No internet connection";
                                     Log.wtf("loadFeed (Volley Error)","NoConnectionError");
-
                                 } else if (volleyError instanceof TimeoutError) {
                                     message = "Connection Timeout";
                                     Log.wtf("loadFeed (Volley Error)","TimeoutError");
