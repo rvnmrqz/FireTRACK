@@ -636,29 +636,39 @@ public class Activity_main_truck extends AppCompatActivity {
                 if(response.trim().equalsIgnoreCase("Process Successful")){
                     // plot the position in map
                     if(shownfirenotifid_in_Map == Integer.parseInt(report_firenotif_ids_list.get(SELECTED_FIRE_REPORT_INDEX)) && respond==0){
+                       Log.wtf("onResponse","Declined and currently shown in map is the same report declined");
                         //it is currently shown in map and it is declined
                         Fragment_truck_map.resetMapView();
                         Fragment_truck_map.hideConfirmationLayout();
                     }else if(shownfirenotifid_in_Map != Integer.parseInt(report_firenotif_ids_list.get(SELECTED_FIRE_REPORT_INDEX)) && respond==0){
                         //it is not currently shown in map and it is declined
+                        Log.wtf("onResponse","Declined but NOT currently shown in map");
                     }
                     else if(respond==1){
+                        Log.wtf("onResponse","ACCEPTED");
                         Fragment_truck_map.hideConfirmationLayout();
-
+                        Log.wtf("onResponse","hideConfirmationLayout");
                         //it is accepted
                         bottomNavigation.setCurrentItem(0);
                         if(myLocation!=null){
+                            Log.wtf("onResponse","myLocation!=null");
                             Fragment_truck_map.waitingForLocation=false;
                             //get the directions now
                             if(Fragment_truck_map.activeRoute!=-1){
+                                Log.wtf("onResponse","activeRoute!=-1");
                                 Fragment_truck_map.markers[Fragment_truck_map.activeRoute].hideInfoWindow();
                                 Fragment_truck_map.hideRoutesExcept(Fragment_truck_map.activeRoute);
                                 Fragment_truck_map.btnShowRoutesDetails.performClick();
+                            }else{
+                                Log.wtf("onResponse","activeRoute==-1");
+                                Fragment_truck_map.requestDirection(myLocation,destinationLocation);
                             }
                         }else{
+                            Log.wtf("onResponse","myLocation==null");
                             Fragment_truck_map.waitingForLocation=true;
                             Fragment_truck_map.animateInitialCameraView(false,destinationLocation);
                         }
+                        Fragment_truck_map.ON_SESSION=true;
                     }
                     deleteIndexFromList(SELECTED_FIRE_REPORT_INDEX);
                 }
@@ -682,6 +692,7 @@ public class Activity_main_truck extends AppCompatActivity {
                         entries = entries+", ";
                     }
                 }
+                Fragment_truck_map.ON_SESSION=false;
                  Log.wtf("updateDeliveredReportsNotif()","Map<String><String>, Query: "+query);
                 params.put("query",query);
                 return params;
@@ -795,15 +806,24 @@ public class Activity_main_truck extends AppCompatActivity {
                 Log.wtf("onLocationChange","Location is changed "+location);
                 myLocation = new LatLng(location.getLatitude(),location.getLongitude());
                 Fragment_truck_map.showLoadingLayout(false,false,"");
-                if(Fragment_truck_map.origin_marker!=null){
-                    Fragment_truck_map.origin_marker.setPosition(myLocation);
-                }
+
                 if(Fragment_truck_map.waitingForLocation){
+                    Log.wtf("onLocationChanged()","UI is waiting for location");
                     if(destinationLocation!=null) {
                         Log.wtf("destinationLocation","VALUE: "+destinationLocation);
-                        Fragment_truck_map.animateInitialCameraView(false, destinationLocation);
+                        Fragment_truck_map.requestDirection(myLocation, destinationLocation);
                     }else{
                         Toast.makeText(staticContext, "Cannot resume direction request, destination is null", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    if(Fragment_truck_map.origin_marker!=null){
+                        Fragment_truck_map.origin_marker.setPosition(myLocation);
+                        if(Fragment_truck_map.ON_SESSION && Fragment_truck_map.activeRoute!=-1){
+                            Fragment_truck_map.NearestPointFinder nearestPointFinder = new Fragment_truck_map.NearestPointFinder();
+                            nearestPointFinder.execute(""+myLocation); //just to make it String
+                        }else{
+                            Toast.makeText(staticContext, "Cannot animate camera, active rote is: "+Fragment_truck_map.activeRoute, Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
                 Toast.makeText(staticContext,"Location Updated",Toast.LENGTH_SHORT).show();

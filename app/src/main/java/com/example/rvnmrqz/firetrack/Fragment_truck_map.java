@@ -74,6 +74,7 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
     static Marker destination_marker;
     public static boolean waitingForLocation=false;
 
+    public static boolean ON_SESSION=false;
     public static Marker origin_marker;
     public static String markerCurrentPosition;
 
@@ -313,7 +314,6 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
             @Override
             public void onClick(View v) {
                 accepted=true;
-                Log.wtf("confirmationListener","Button Accept is clicked");
                 Toast.makeText(getContext(),"Accept is clicked",Toast.LENGTH_SHORT).show();
                 Activity_main_truck.showConfirmationDialog(Activity_main_truck.report_firenotif_ids_list.get(Activity_main_truck.SELECTED_FIRE_REPORT_INDEX),1);
             }
@@ -324,11 +324,6 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
                 accepted=false;
                 Activity_main_truck.showConfirmationDialog(Activity_main_truck.report_firenotif_ids_list.get(Activity_main_truck.SELECTED_FIRE_REPORT_INDEX),0);
                 Log.wtf("confirmationListener","Button Decline is clicked");
-                Toast.makeText(getContext(),"Decline is clicked",Toast.LENGTH_SHORT).show();
-               /* resetMapView();
-                hideConfirmationLayout();
-                */
-
             }
         });
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -438,6 +433,7 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
 
     //directions
  public static void requestDirection(LatLng origin, LatLng destination) {
+     destinationLatlng = destination;
      Log.wtf("requestDirection()","Request started, origin: "+origin+ "\t destination"+destination);
         showLoadingLayout(true,true,"Requesting Directions");
         GoogleDirection.withServerKey(serverKey)
@@ -465,7 +461,6 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
             );
 
             //**********************************************
-
             //to make origin marker draggable
             origin_marker = mGooglemap.addMarker(new MarkerOptions().position(Activity_main_truck.myLocation).draggable(true));
 
@@ -763,6 +758,7 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
                 //animate camera
                 animateDirectionCameraView(integer+1);
             }
+            Toast.makeText(context, "Animate Direction ["+integer+"]", Toast.LENGTH_SHORT).show();
         }
 
         private float getDistance(LatLng position, LatLng assumed){

@@ -2,13 +2,22 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="D:\AS_Projects\FireTRACK\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\arvin\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.0.1\b34c1f2d993044656e87f88970b6818e99e886ba\okhttp-3.0.1.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="d0591b500d7107babeb5d901af21e9ca653e6ca0">
-        <dex dex="D:\AS_Projects\FireTRACK\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_8301a09c84399c4632336a6dd7d23f6964e80467\classes.dex" />
+        sha1="b34c1f2d993044656e87f88970b6818e99e886ba">
+        <dex dex="D:\AS_Projects\FireTRACK\app\build\intermediates\pre-dexed\debug\okhttp-3.0.1_d8805fb9d9ae9266278e53737928970ef9c32cd2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\arvin\.gradle\caches\modules-2\files-2.1\org.parceler\parceler-api\1.0.4\4f7392b86e064f3f6da06977f54c21a48e6b6871\parceler-api-1.0.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4f7392b86e064f3f6da06977f54c21a48e6b6871">
+        <dex dex="D:\AS_Projects\FireTRACK\app\build\intermediates\pre-dexed\debug\parceler-api-1.0.4_46cf4c9b862d6bb06ea0e4138c795573853a03a6.jar" />
     </item>
     <item
         is-multidex="true"
@@ -18,6 +27,96 @@
         revision="25.0.2"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
         <dex dex="D:\AS_Projects\FireTRACK\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_928813ecade220e2271ec116738b344c1e1d0cb0\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\arvin\.android\build-cache\00bd0447f46061619948a27a9a3c5e327ea20cfd\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1c4f62b5874f45a6fd3617fa6447714adb7a72a7">
+        <dex dex="D:\AS_Projects\FireTRACK\app\build\intermediates\pre-dexed\debug\classes_a9870c11e7e6e9e06649d7a2a3793786803e5a59.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\arvin\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.0.0-beta4\739e00dea1f0ac04fdb9b6160d667e23cc50a791\retrofit-2.0.0-beta4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="739e00dea1f0ac04fdb9b6160d667e23cc50a791">
+        <dex dex="D:\AS_Projects\FireTRACK\app\build\intermediates\pre-dexed\debug\retrofit-2.0.0-beta4_a2b1f54183d247abbb184eaaaefee10352578b70.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\arvin\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="D:\AS_Projects\FireTRACK\app\build\intermediates\pre-dexed\debug\okio-1.6.0_ea4079a93b0879867fdd00ae608cd51a0e4f404b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\arvin\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.0.0-beta4\de5935a367ba5e343e9df786ac8fc0c7d52b5f0c\converter-gson-2.0.0-beta4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="de5935a367ba5e343e9df786ac8fc0c7d52b5f0c">
+        <dex dex="D:\AS_Projects\FireTRACK\app\build\intermediates\pre-dexed\debug\converter-gson-2.0.0-beta4_1a9eba169201041f4f48cda1c3bc50cbd572e8b8.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AS_Projects\FireTRACK\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d0591b500d7107babeb5d901af21e9ca653e6ca0">
+        <dex dex="D:\AS_Projects\FireTRACK\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_8301a09c84399c4632336a6dd7d23f6964e80467\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\arvin\.android\build-cache\ae00380e9018572a1fc589a80d0f69b3f18c07d3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="D:\AS_Projects\FireTRACK\app\build\intermediates\pre-dexed\debug\classes_805b89360f19950229f810a0a9152e5eb9e7268c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\arvin\.android\build-cache\4aed8df9d6988782d60e51faca6ec2fcae30a100\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c8ba41bea7f78f8bdf3a803b9d08eb3fff416706">
+        <dex dex="D:\AS_Projects\FireTRACK\app\build\intermediates\pre-dexed\debug\classes_b20df9928f54eff840a405fcd4383108c254f16b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\arvin\.android\build-cache\fbfbcd99aa16a3939145edb62759e5ea7efd8288\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="D:\AS_Projects\FireTRACK\app\build\intermediates\pre-dexed\debug\classes_790cb6f02437dd89c1d6a069a0487db69c3a84c3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\arvin\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.4\695b63d702f505b9b916e02272e3b6381bade7f\gson-2.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0695b63d702f505b9b916e02272e3b6381bade7f">
+        <dex dex="D:\AS_Projects\FireTRACK\app\build\intermediates\pre-dexed\debug\gson-2.4_6c7ca08e1c958a506c5ff7be2539f0fdda606ff2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\arvin\.android\build-cache\fc9bec2e214aec37536f71dc86303b2041fe3e81\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="04de44f90606c77f3b28cf44861f306290505aac">
+        <dex dex="D:\AS_Projects\FireTRACK\app\build\intermediates\pre-dexed\debug\classes_d4795950d72d25f3872f3b0064766639f038c5fc.jar" />
     </item>
 
 </items>
