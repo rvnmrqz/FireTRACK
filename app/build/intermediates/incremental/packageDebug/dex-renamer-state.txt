@@ -1,4 +1,4 @@
-#Sun Aug 13 14:30:38 CST 2017
+#Sun Aug 13 18:38:50 CST 2017
 base.0=D\:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_928813ecade220e2271ec116738b344c1e1d0cb0
 renamed.1=classes2.dex
 renamed.0=classes.dex

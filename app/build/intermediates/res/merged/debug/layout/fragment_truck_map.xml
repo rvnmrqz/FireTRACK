@@ -54,7 +54,7 @@
             android:layout_height="wrap_content" />
         <LinearLayout
             android:id="@+id/truck_button_extra_Layout_showDetails"
-            android:visibility="visible"
+            android:visibility="invisible"
             android:layout_gravity="end"
             android:layout_margin="8dp"
             android:background="#80ffffff"

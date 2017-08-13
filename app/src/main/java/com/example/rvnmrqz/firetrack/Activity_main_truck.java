@@ -96,6 +96,7 @@ public class Activity_main_truck extends AppCompatActivity {
     public static boolean fullscreen=false;
 
     //tab 2
+
     RelativeLayout tab2;
     SwipeRefreshLayout tab2_swipeRefreshLayout;
     static LinearLayout tab2_listLayout, tab2_loadingLayout, tab2_errormsgLayout;
@@ -121,7 +122,9 @@ public class Activity_main_truck extends AppCompatActivity {
 
 
     //location
+    public static int SELECTED_FIRE_REPORT_INDEX=-1;
     public static LatLng myLocation;
+    public static LatLng destinationLocation;
     private static LocationManager locationManager;
     private static LocationListener locationListener;
     static int     LOCATION_PERMISSION=2;
@@ -259,7 +262,6 @@ public class Activity_main_truck extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.truck_fragment_container,new Fragment_truck_map()).commit();
     }
-
     //************************************************************
 
     //TAB2
@@ -462,10 +464,6 @@ public class Activity_main_truck extends AppCompatActivity {
         tab2_zoomlayout.setVisibility(View.GONE);
         imageIsZoomed=false;
     }
-
-    public static void setReportNotificationBadge(int notifcount){
-        bottomNavigation.setNotification((notifcount+""),1);
-    }
     // REPORT LISTVIEW ADAPTER
     static class ReportAdapter extends ArrayAdapter {
         ArrayList<String> report_firenotif_ids_list= new ArrayList<String>();
@@ -517,30 +515,40 @@ public class Activity_main_truck extends AppCompatActivity {
                 public void onClick(View v) {
                     //extract the coordinate
                     Fragment_truck_map.resetMapView();
-                    shownfirenotifid_in_Map = Integer.parseInt(report_firenotif_ids_list.get(position));
                     String parts[] = report_coordinates_list.get(position).trim().split(",");
                     Double latitude = Double.parseDouble(parts[0]);
                     Double longtitude = Double.parseDouble(parts[1]);
+                    destinationLocation = new LatLng(latitude,longtitude);
+                    shownfirenotifid_in_Map = Integer.parseInt(report_firenotif_ids_list.get(position));
                     bottomNavigation.setCurrentItem(0);
+                    SELECTED_FIRE_REPORT_INDEX = position;
                     Fragment_truck_map.showConfirmationOnMap(true);
-                    Fragment_truck_map.addDestinationmarker(new LatLng(latitude,longtitude),"Fire Location",report_coordinates_list.get(position));
+                    Fragment_truck_map.addDestinationmarker(destinationLocation,"Fire Location",report_coordinates_list.get(position));
                 }
             });
             Button btnAccept = (Button) row.findViewById(R.id.report_template_acceptButton);
             btnAccept.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   showConfirmationDialog(position,report_firenotif_ids_list.get(position),1);
+                    Fragment_truck_map.resetMapView();
+                    String parts[] = report_coordinates_list.get(position).trim().split(",");
+                    Double latitude = Double.parseDouble(parts[0]);
+                    Double longtitude = Double.parseDouble(parts[1]);
+                    destinationLocation = new LatLng(latitude,longtitude);
+                    SELECTED_FIRE_REPORT_INDEX = position;
+                    Fragment_truck_map.accepted=true;
+                   showConfirmationDialog(report_firenotif_ids_list.get(position),1);
                 }
             });
             Button btnDecline = (Button) row.findViewById(R.id.report_template_declineButton);
             btnDecline.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showConfirmationDialog(position,report_firenotif_ids_list.get(position),0);
+                    SELECTED_FIRE_REPORT_INDEX = position;
+                    Fragment_truck_map.accepted=false;
+                    showConfirmationDialog(report_firenotif_ids_list.get(position),0);
                 }
             });
-
 
             moredetailsTXT.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -591,17 +599,16 @@ public class Activity_main_truck extends AppCompatActivity {
             return row;
         }
     }
-    protected static void showConfirmationDialog(final int position, final String notif_id, final int respond){
+    public static void showConfirmationDialog(final String notif_id, final int respond){
         String response = "accept";
         if(respond==0) response="decline";
-
         new AlertDialog.Builder(staticContext)
                 .setTitle("Confirmation")
                 .setMessage("You are about to "+response+" this respond request, continue?")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        sendResponse(position,notif_id,respond);
+                        sendResponse(notif_id,respond);
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -612,7 +619,7 @@ public class Activity_main_truck extends AppCompatActivity {
                 })
                 .show();
     }
-    protected static void sendResponse(final int position, String notif_id, final int respond ){
+    protected static void sendResponse(String notif_id, final int respond ){
         String response = "ACCEPTED";
         if(respond==0) response="DECLINED";
 
@@ -628,19 +635,40 @@ public class Activity_main_truck extends AppCompatActivity {
                 //delete from the listview
                 if(response.trim().equalsIgnoreCase("Process Successful")){
                     // plot the position in map
-                    if(shownfirenotifid_in_Map == Integer.parseInt(report_firenotif_ids_list.get(position)) && respond==0){
+                    if(shownfirenotifid_in_Map == Integer.parseInt(report_firenotif_ids_list.get(SELECTED_FIRE_REPORT_INDEX)) && respond==0){
                         //it is currently shown in map and it is declined
                         Fragment_truck_map.resetMapView();
+                        Fragment_truck_map.hideConfirmationLayout();
+                    }else if(shownfirenotifid_in_Map != Integer.parseInt(report_firenotif_ids_list.get(SELECTED_FIRE_REPORT_INDEX)) && respond==0){
+                        //it is not currently shown in map and it is declined
                     }
-                    deleteIndexFromList(position);
+                    else if(respond==1){
+                        Fragment_truck_map.hideConfirmationLayout();
+
+                        //it is accepted
+                        bottomNavigation.setCurrentItem(0);
+                        if(myLocation!=null){
+                            Fragment_truck_map.waitingForLocation=false;
+                            //get the directions now
+                            if(Fragment_truck_map.activeRoute!=-1){
+                                Fragment_truck_map.markers[Fragment_truck_map.activeRoute].hideInfoWindow();
+                                Fragment_truck_map.hideRoutesExcept(Fragment_truck_map.activeRoute);
+                                Fragment_truck_map.btnShowRoutesDetails.performClick();
+                            }
+                        }else{
+                            Fragment_truck_map.waitingForLocation=true;
+                            Fragment_truck_map.animateInitialCameraView(false,destinationLocation);
+                        }
+                    }
+                    deleteIndexFromList(SELECTED_FIRE_REPORT_INDEX);
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.wtf("updateDeliveredReportsNotif()","Error: "+error.getMessage());
+                Log.wtf("sendResponse()","Error: "+error.getMessage());
                 //show an error message
-
+                Toast.makeText(staticContext, "Failed to send your response", Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
@@ -733,8 +761,11 @@ public class Activity_main_truck extends AppCompatActivity {
         if(report_firenotif_ids_list.size()==0){
             showTab2MessageLayout(true,"No Fire Reports",true,"Refresh");
         }
+        SELECTED_FIRE_REPORT_INDEX=-1;
     }
-
+    public static void setReportNotificationBadge(int notifcount){
+        bottomNavigation.setNotification((notifcount+""),1);
+    }
     //************************************************************
 
     //LOCATION
@@ -767,7 +798,15 @@ public class Activity_main_truck extends AppCompatActivity {
                 if(Fragment_truck_map.origin_marker!=null){
                     Fragment_truck_map.origin_marker.setPosition(myLocation);
                 }
-                Toast.makeText(staticContext,"Location Captured",Toast.LENGTH_SHORT).show();
+                if(Fragment_truck_map.waitingForLocation){
+                    if(destinationLocation!=null) {
+                        Log.wtf("destinationLocation","VALUE: "+destinationLocation);
+                        Fragment_truck_map.animateInitialCameraView(false, destinationLocation);
+                    }else{
+                        Toast.makeText(staticContext, "Cannot resume direction request, destination is null", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                Toast.makeText(staticContext,"Location Updated",Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -865,7 +904,6 @@ public class Activity_main_truck extends AppCompatActivity {
         }
     }
 
-
     //PERMISSION
     public static void checkPermission() {
         Log.wtf("CHECKPERMISSION()", "CALLED");
@@ -941,15 +979,13 @@ public class Activity_main_truck extends AppCompatActivity {
         }
     }
 
-
-
     @Override
     public void onBackPressed() {
         switch (bottomNavigation.getCurrentItem()){
             case 0:
                 //map
                 if(fullscreen){
-                    //exitFullScreenMap();
+                    Fragment_truck_map.exitFullScreenMap();
                 }else{
                     new AlertDialog.Builder(this)
                             .setTitle("Closing")

@@ -52,8 +52,7 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
     MapView mMapView;
     View myview;
 
-    Animation anim_down;
-
+    static Animation anim_down;
     static LinearLayout confirmationLayout;
     Button btnAccept,btnDecline, btnCancel;
 
@@ -63,7 +62,7 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
 
     //adding of routes preview
     static boolean accepted=false;
-    ImageButton btnFullscreen;
+    static ImageButton btnFullscreen;
     static ImageButton btnShowRoutesDetails;
     Animation anim_slideLeft, anim_slideRight;
     static LinearLayout routesDetailsLayout,  button_extra_Layout_showDetails;
@@ -73,17 +72,18 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
     private static String serverKey = "AIzaSyAz5QHXjEaFaTG2MNTsJsJmseT8oAp1CBE";
     static LatLng destinationLatlng;
     static Marker destination_marker;
+    public static boolean waitingForLocation=false;
 
     public static Marker origin_marker;
     public static String markerCurrentPosition;
 
 
     String colors[] = new String[]{"#3d40ed","#2abc25", "#ef15ec"};
-    Polyline polylines[] = new Polyline[3];
+    static Polyline[] polylines = new Polyline[3];
     double distance[] = new double[3];
     String duration[] = new String[3];
     LatLng middleLatlng[] = new LatLng[3];
-    Marker markers[] = new Marker[3];
+    static Marker[] markers = new Marker[3];
     MarkerOptions markerOptions[] = new MarkerOptions[3];
     LinearLayout  route1, route2, route3;
     LinearLayout routes_linearLayouts[];
@@ -93,9 +93,9 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
 
 
     //container of all latlng points
-    int activeRoute=-1;
+    static int activeRoute=-1;
     ArrayList<LatLng> directionPositionList;
-    ArrayList<LatLng> directionPositionLists[] = new ArrayList[3];
+    static ArrayList<LatLng>[] directionPositionLists = new ArrayList[3];
 
 
     public Fragment_truck_map() {
@@ -281,7 +281,10 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
     }
 
     public static void resetMapView(){
+        accepted=false;
+        activeRoute=-1;
         routesDetailsIsShown=false;
+        waitingForLocation=false;
        // progress_layout.setVisibility(View.GONE);
         confirmationLayout.setVisibility(View.GONE);
         mGooglemap.clear();
@@ -289,6 +292,7 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
         markerCurrentPosition=null;
         showRoutesDetails(false);
         showValenzuelaInMap();
+
     }
 
     public static void showValenzuelaInMap(){
@@ -311,24 +315,19 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
                 accepted=true;
                 Log.wtf("confirmationListener","Button Accept is clicked");
                 Toast.makeText(getContext(),"Accept is clicked",Toast.LENGTH_SHORT).show();
-                markers[activeRoute].hideInfoWindow();
-                hideRoutesExcept(activeRoute);
-                btnShowRoutesDetails.performClick();
-                hideConfirmationLayout();
-                //remove the item from the list and insert in tbl_firenotif_response
-
+                Activity_main_truck.showConfirmationDialog(Activity_main_truck.report_firenotif_ids_list.get(Activity_main_truck.SELECTED_FIRE_REPORT_INDEX),1);
             }
         });
         btnDecline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 accepted=false;
+                Activity_main_truck.showConfirmationDialog(Activity_main_truck.report_firenotif_ids_list.get(Activity_main_truck.SELECTED_FIRE_REPORT_INDEX),0);
                 Log.wtf("confirmationListener","Button Decline is clicked");
                 Toast.makeText(getContext(),"Decline is clicked",Toast.LENGTH_SHORT).show();
-
-                resetMapView();
+               /* resetMapView();
                 hideConfirmationLayout();
-                //remove the item from the list and insert in tbl_firenotif_response
+                */
 
             }
         });
@@ -343,8 +342,8 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
         });
 
     }
-    protected void hideConfirmationLayout(){
-        anim_down = AnimationUtils.loadAnimation(getContext(),R.anim.slide_down);
+    protected static void hideConfirmationLayout(){
+        anim_down = AnimationUtils.loadAnimation(context,R.anim.slide_down);
         confirmationLayout.startAnimation(anim_down);
         anim_down.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -366,14 +365,19 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
     public static void addDestinationmarker(LatLng coor,String title, String snippetmsg){
         accepted=false;
         destinationLatlng = coor;
-        animateSingleCameraView(false,destinationLatlng);
+        animateInitialCameraView(false,destinationLatlng);
         destination_marker =  mGooglemap.addMarker(new MarkerOptions().position(coor).title(title).snippet(snippetmsg));
         destination_marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.fire_marker));
     }
-    public static void animateSingleCameraView(boolean tilted,LatLng location){
+    public static void animateInitialCameraView(boolean tilted, LatLng location){
+        destinationLatlng = location;
         if(Activity_main_truck.myLocation!=null){
+            Log.wtf("animateInitialCameraView()","Current locataion is not null");
+            waitingForLocation=false;
             requestDirection(Activity_main_truck.myLocation,destinationLatlng);
         }else{
+            Log.wtf("animateInitialCameraView()","Current locataion is null");
+            waitingForLocation=true;
             CameraPosition position;
             if(tilted){
                 position = new CameraPosition.Builder()
@@ -385,7 +389,6 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
                         .zoom(18f).build();
             }
             mGooglemap.animateCamera(CameraUpdateFactory.newCameraPosition(position));
-
         }
     }
 
@@ -410,13 +413,13 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
         Activity_main_truck.bottomNavigation.setVisibility(View.GONE);
         ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
     }
-    protected void exitFullScreenMap(){
+    protected static void exitFullScreenMap(){
         //exit from fullscreen
         btnFullscreen.setImageResource(R.drawable.ic_fulllscreen_black);
         Activity_main_truck.fullscreen=false;
         Activity_main_truck.bottomNavigation.setVisibility(View.VISIBLE);
         Activity_main_truck.bottomNavigation.restoreBottomNavigation();
-        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity)context).getSupportActionBar().show();
     }
     protected static void showRoutesDetails(boolean show){
         if(show){
@@ -435,8 +438,8 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
 
     //directions
  public static void requestDirection(LatLng origin, LatLng destination) {
+     Log.wtf("requestDirection()","Request started, origin: "+origin+ "\t destination"+destination);
         showLoadingLayout(true,true,"Requesting Directions");
-
         GoogleDirection.withServerKey(serverKey)
                 .from(origin)
                 .to(destination)
@@ -450,7 +453,7 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
     public void onDirectionSuccess(Direction direction, String rawBody) {
         if (direction.isOK()) {
             showLoadingLayout(false,false,"");
-
+            waitingForLocation=false;
             //to fit the markers in screen
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             builder.include(Activity_main_truck.myLocation);
@@ -514,7 +517,7 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
     }
 
     //route click functions
-    private void hideRoutesExcept(int routeNo){
+    public static void hideRoutesExcept(int routeNo){
         Log.wtf("hideRouteExcpet()","routeNo: "+routeNo);
         if(routeNo==-1){
             routeNo=0;
@@ -648,7 +651,7 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
     }
 
     //camera and map animations
-    private void rotateMap(){
+    private static void rotateMap(){
         if(origin_marker!=null){
             Log.wtf("rotateMap","origin marker is not null");
             if(activeRoute==-1){
@@ -671,7 +674,7 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
             Toast.makeText(context, "Request Location First", Toast.LENGTH_SHORT).show();
         }
     }
-    private void animateDirectionCameraView(int INDEX){
+    private static void animateDirectionCameraView(int INDEX){
         try{
             if(INDEX>=directionPositionLists[activeRoute].size()){
                 INDEX = directionPositionLists[activeRoute].size()-1;
@@ -687,7 +690,7 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
 
             CameraPosition currentPlace = new CameraPosition.Builder()
                     .target(markerLoc)
-                    .bearing(brng).tilt(65.5f).zoom(34f).build();
+                    .bearing(brng).tilt(65.5f).zoom(20f).build();
             mGooglemap.animateCamera(CameraUpdateFactory
                     .newCameraPosition(currentPlace));
 
@@ -696,7 +699,7 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
             Toast.makeText(context, "Exception while animating camera", Toast.LENGTH_SHORT).show();
         }
     }
-    class NearestPointFinder extends AsyncTask<String,Void,Integer> {
+    static class NearestPointFinder extends AsyncTask<String,Void,Integer> {
         LatLng origin_marker_position;
 
         @Override
@@ -775,9 +778,5 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
             float value = results[0];
             return value;
         }
-
-
     }
-
-
 }
