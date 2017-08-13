@@ -98,7 +98,6 @@ public class Fragment_online_reporting extends Fragment {
 
     int barangay_local_id=-1;
     static String selectedBarangay=null;
-    static String number=null;
     String coordinates =null;
 
     LinearLayout loadinglayout;
@@ -107,6 +106,7 @@ public class Fragment_online_reporting extends Fragment {
 
 
     static ArrayList<Integer> b_local_id;
+    static ArrayList<String> b_online_id;
     static ArrayList<String> b_name;
     static ArrayList<LatLng> b_coordinates;
 
@@ -486,14 +486,14 @@ public class Fragment_online_reporting extends Fragment {
                 .setTitle("Turn On Location")
                 .setMessage("This function Requires Location")
                 .setCancelable(false)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                .setPositiveButton("Turn On", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Log.wtf("TurnOnGPSTracking","Settings intent is called");
                         startActivityForResult(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS),OPEN_GPS_SETTINGS_REQUEST);
                     }
                 })
-                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Log.wtf("TurnOnGPSTracking","User clicked Cancel");
@@ -662,8 +662,8 @@ public class Fragment_online_reporting extends Fragment {
                 }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                String query = "INSERT INTO tbl_reports(reporter_id,report_status,report_datetime,additional_info,coordinates,picture)" +
-                        "VALUES(" + user_account_id +", 'PENDING', NOW(), '" + txtAdditionalInfo.getText().toString().trim() + "','" + coordinates + "','" + encodedImage + "');";
+                String query = "INSERT INTO "+dbhelper.TABLE_REPORTS+"("+dbhelper.COL_REPORTER_id+","+dbhelper.BARANGAY_ID+",report_datetime,additional_info,coordinates,picture)" +
+                        "VALUES(" + user_account_id +","+selectedBarangay+" ,NOW(), '" + txtAdditionalInfo.getText().toString().trim() + "','" + coordinates + "','" + encodedImage + "');";
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("query", query);
                 return params;
@@ -698,6 +698,7 @@ public class Fragment_online_reporting extends Fragment {
 
     //FINDING NEAREST FIRE STATION
     private void populateBarangayArrayListDetails(){
+        b_online_id = new ArrayList<>();
         b_local_id = new ArrayList<>();
         b_name = new ArrayList<>();
         b_coordinates = new ArrayList<>();
@@ -709,10 +710,12 @@ public class Fragment_online_reporting extends Fragment {
             if(c.getCount()>0){
                 c.moveToFirst();
                 do{
+                    String online_id = c.getString(c.getColumnIndex(dbhelper.BARANGAY_ID));
                     int barangay_local_id = c.getInt(c.getColumnIndex(dbhelper.BARANGAY_LOC_ID));
                     String name = c.getString(c.getColumnIndex(dbhelper.BARANGAY_NAME));
                     String coor = c.getString(c.getColumnIndex(dbhelper.BARANGAY_COORDINATES));
                     Log.wtf("Index: "+c.getString(c.getColumnIndex(dbhelper.BARANGAY_LOC_ID)),"Name: "+name+"\nCoordinates: "+coor);
+                    b_online_id.add(online_id);
                     b_local_id.add(barangay_local_id);
                     b_name.add(name);
                     if(coor==null){
@@ -818,6 +821,7 @@ public class Fragment_online_reporting extends Fragment {
             if(index!=-1){
                 Log.wtf("onPostExecute","worker is done, index: "+index);
                         showLoadingLayout(true,false,"Ready to Send");
+                        selectedBarangay = b_online_id.get(index);
                         barangay_local_id = b_local_id.get(index);
                         Toast.makeText(getActivity(), "You can now send your report", Toast.LENGTH_SHORT).show();
             }

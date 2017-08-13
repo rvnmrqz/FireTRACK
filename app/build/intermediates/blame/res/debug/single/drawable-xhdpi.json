@@ -184,6 +184,10 @@
         "source": "C:\\Users\\arvin\\.android\\build-cache\\fbfbcd99aa16a3939145edb62759e5ea7efd8288\\output\\res\\drawable-xhdpi\\common_plus_signin_btn_icon_dark_normal.9.png"
     },
     {
+        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\transparent.png",
+        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\drawable-xhdpi\\transparent.png"
+    },
+    {
         "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\common_google_signin_btn_icon_dark_focused.9.png",
         "source": "C:\\Users\\arvin\\.android\\build-cache\\fbfbcd99aa16a3939145edb62759e5ea7efd8288\\output\\res\\drawable-xhdpi\\common_google_signin_btn_icon_dark_focused.9.png"
     },

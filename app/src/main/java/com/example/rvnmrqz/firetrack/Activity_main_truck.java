@@ -1,22 +1,36 @@
 package com.example.rvnmrqz.firetrack;
 
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,8 +38,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -35,6 +47,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,54 +73,70 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Activity_main_truck extends AppCompatActivity {
 
+    static Context staticContext;
+    static Activity staticActivtity;
     String account_id=null;
-    DBHelper dbHelper;
+    static DBHelper dbHelper;
     public static AHBottomNavigation bottomNavigation;
     AHBottomNavigationItem item1,item2,item3;
 
     //tab 1
     FrameLayout tab1;
     FrameLayout frameContainer;
-    int shownfirenotifid_in_Map;
+    static int shownfirenotifid_in_Map;
     public static boolean fullscreen=false;
 
     //tab 2
     RelativeLayout tab2;
     SwipeRefreshLayout tab2_swipeRefreshLayout;
-    LinearLayout tab2_listLayout, tab2_loadingLayout, tab2_errormsgLayout;
-    FrameLayout tab2_zoomlayout;
-    ListView tab2_listview;
-    TextView tab2_loadingTxt, tab2_errorTxt, tab2_zoomExitTxt;
-    Button tab2_errorButton;
+    static LinearLayout tab2_listLayout, tab2_loadingLayout, tab2_errormsgLayout;
+    static FrameLayout tab2_zoomlayout;
+    static ListView tab2_listview;
+    static TextView tab2_loadingTxt, tab2_errorTxt, tab2_zoomExitTxt;
+    static Button tab2_errorButton;
     ProgressBar tab2_loadingProgressbar;
-    TouchImageView tab2_zoomTouchimage;
-    boolean imageIsZoomed=false;
-    ReportAdapter adapter;
+    static TouchImageView tab2_zoomTouchimage;
+    static boolean imageIsZoomed=false;
+    static ReportAdapter adapter;
 
-    ArrayList<String> report_firenotif_ids_list= new ArrayList<String>();
-    ArrayList<String> report_images_list= new ArrayList<String>();
-    ArrayList<String> report_coordinates_list = new ArrayList<String>();
-    ArrayList<String> report_datetime_list = new ArrayList<String>();
-    ArrayList<String> report_firestatus_list = new ArrayList<String>();
-    ArrayList<String> report_alarmlevel_list = new ArrayList<String>();
-    ArrayList<String> report_additionalInfo_list= new ArrayList<String>();
+    static ArrayList<String> report_firenotif_ids_list= new ArrayList<String>();
+    static ArrayList<String> report_images_list= new ArrayList<String>();
+    static ArrayList<String> report_coordinates_list = new ArrayList<String>();
+    static ArrayList<String> report_datetime_list = new ArrayList<String>();
+    static ArrayList<String> report_firestatus_list = new ArrayList<String>();
+    static ArrayList<String> report_alarmlevel_list = new ArrayList<String>();
+    static ArrayList<String> report_additionalInfo_list= new ArrayList<String>();
 
     //tab 3
     RelativeLayout tab3;
 
+
+    //location
+    public static LatLng myLocation;
+    private static LocationManager locationManager;
+    private static LocationListener locationListener;
+    static int     LOCATION_PERMISSION=2;
+    static int OPEN_GPS_SETTINGS_REQUEST=30;
+    int OPEN_PERMISSION_REQUEST=40;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitiy_main_truck);
 
+        staticContext = Activity_main_truck.this;
+        staticActivtity = Activity_main_truck.this;
         dbHelper = new DBHelper(this);
+
         //get the current user's account_id
         Cursor c = dbHelper.getSqliteData("SELECT "+dbHelper.COL_ACC_ID+" FROM "+dbHelper.TABLE_USER +" WHERE "+dbHelper.COL_USER_LOC_ID+"=1");
         if(c!=null){
@@ -154,9 +183,14 @@ public class Activity_main_truck extends AppCompatActivity {
             }
         });
         tab2_zoomTouchimage = (TouchImageView) findViewById(R.id.truck_tab2_touchimageview);
-
-
         loadReportNotifications();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        stopLocationListener();
+        super.onDestroy();
     }
 
     protected void initializeBottomNav(){
@@ -219,7 +253,6 @@ public class Activity_main_truck extends AppCompatActivity {
         tab2.setVisibility(View.GONE);
         tab3.setVisibility(View.VISIBLE);
     }
-
 
     //TAB1
     protected void displayFragmentMap(){
@@ -399,7 +432,7 @@ public class Activity_main_truck extends AppCompatActivity {
              tab2_loadingLayout.setVisibility(View.GONE);
          }
     }
-    protected void showTab2MessageLayout(boolean show,String msg, boolean showButton, String buttonText){
+    protected static void showTab2MessageLayout(boolean show,String msg, boolean showButton, String buttonText){
         if(show) {
             tab2_listLayout.setVisibility(View.GONE);
             tab2_loadingLayout.setVisibility(View.GONE);
@@ -415,13 +448,13 @@ public class Activity_main_truck extends AppCompatActivity {
             tab2_errormsgLayout.setVisibility(View.GONE);
         }
     }
-    protected void zoomImage(Bitmap bitmap){
+    protected static void zoomImage(Bitmap bitmap){
         tab2_zoomlayout.setVisibility(View.VISIBLE);
         try{
             tab2_zoomTouchimage.setImageBitmap(bitmap);
             imageIsZoomed=true;
         }catch (Exception e){
-            Toast.makeText(this, "Cant load the image", Toast.LENGTH_SHORT).show();
+            Toast.makeText(staticContext, "Cant load the image", Toast.LENGTH_SHORT).show();
             Log.wtf("zoomImage()","Exception Encountered: "+e.getMessage());
         }
     }
@@ -434,7 +467,7 @@ public class Activity_main_truck extends AppCompatActivity {
         bottomNavigation.setNotification((notifcount+""),1);
     }
     // REPORT LISTVIEW ADAPTER
-    class ReportAdapter extends ArrayAdapter {
+    static class ReportAdapter extends ArrayAdapter {
         ArrayList<String> report_firenotif_ids_list= new ArrayList<String>();
         ArrayList<String> report_images_list= new ArrayList<String>();
         ArrayList<String> report_coordinates_list = new ArrayList<String>();
@@ -483,12 +516,13 @@ public class Activity_main_truck extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     //extract the coordinate
+                    Fragment_truck_map.resetMapView();
                     shownfirenotifid_in_Map = Integer.parseInt(report_firenotif_ids_list.get(position));
                     String parts[] = report_coordinates_list.get(position).trim().split(",");
                     Double latitude = Double.parseDouble(parts[0]);
                     Double longtitude = Double.parseDouble(parts[1]);
                     bottomNavigation.setCurrentItem(0);
-                    Fragment_truck_map.showPreviewOnMap(true);
+                    Fragment_truck_map.showConfirmationOnMap(true);
                     Fragment_truck_map.addDestinationmarker(new LatLng(latitude,longtitude),"Fire Location",report_coordinates_list.get(position));
                 }
             });
@@ -548,7 +582,7 @@ public class Activity_main_truck extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Log.wtf("adapter","Image is clicked");
-                    Toast.makeText(Activity_main_truck.this, "image is clicked", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(staticContext, "image is clicked", Toast.LENGTH_SHORT).show();
                     Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
                     zoomImage(bitmap);
                 }
@@ -557,14 +591,13 @@ public class Activity_main_truck extends AppCompatActivity {
             return row;
         }
     }
-
-    protected void showConfirmationDialog(final int position, final String notif_id, final int respond){
+    protected static void showConfirmationDialog(final int position, final String notif_id, final int respond){
         String response = "accept";
         if(respond==0) response="decline";
 
-        new AlertDialog.Builder(this)
+        new AlertDialog.Builder(staticContext)
                 .setTitle("Confirmation")
-                .setMessage("You are about to "+response+" this report, continue?")
+                .setMessage("You are about to "+response+" this respond request, continue?")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -579,14 +612,14 @@ public class Activity_main_truck extends AppCompatActivity {
                 })
                 .show();
     }
-    protected void sendResponse(final int position, String notif_id, final int respond ){
+    protected static void sendResponse(final int position, String notif_id, final int respond ){
         String response = "ACCEPTED";
         if(respond==0) response="DECLINED";
 
         final String query = "INSERT INTO "+dbHelper.TABLE_FIRENOTIF_RESPONSE+"("+dbHelper.COL_FIRENOTIF_ID+","+dbHelper.COL_RESPONSE+","+dbHelper.COL_RESPONSES_DATETIME+") VALUES("+notif_id+",'"+response+"',NOW());";
 
         String url = ServerInfoClass.HOST_ADDRESS+"/do_query.php";
-        RequestQueue requestQueue  = Volley.newRequestQueue(getApplicationContext());
+        RequestQueue requestQueue  = Volley.newRequestQueue(staticContext);
         StringRequest request = new StringRequest(Request.Method.POST, url
                 , new Response.Listener<String>() {
             @Override
@@ -600,10 +633,7 @@ public class Activity_main_truck extends AppCompatActivity {
                         Fragment_truck_map.resetMapView();
                     }
                     deleteIndexFromList(position);
-
                 }
-
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -679,7 +709,7 @@ public class Activity_main_truck extends AppCompatActivity {
         request.setShouldCache(false);
         requestQueue.add(request);
     }
-    protected void deleteIndexFromList(int position){
+    public static void deleteIndexFromList(int position){
         Log.wtf("deleteIndexFromList()","Deleting from index: "+position);
         report_firenotif_ids_list.remove(position);
         report_images_list.remove(position);
@@ -688,9 +718,8 @@ public class Activity_main_truck extends AppCompatActivity {
         report_firestatus_list.remove(position);
         report_alarmlevel_list.remove(position);
         report_additionalInfo_list.remove(position);
-
         tab2_listview.setAdapter(null);
-        adapter = new ReportAdapter(getApplicationContext(),
+        adapter = new ReportAdapter(staticContext,
                 report_firenotif_ids_list,
                 report_images_list,
                 report_coordinates_list,
@@ -707,6 +736,212 @@ public class Activity_main_truck extends AppCompatActivity {
     }
 
     //************************************************************
+
+    //LOCATION
+    protected static void getCurrentLocation(){
+        if(isLocationPermissionGranted()){
+            Log.wtf("get current location","Permission is Granted");
+            if(isLocationEnabled(staticContext)){
+                requestLocationUpdate();
+                Log.wtf("get current location","Location is enabled");
+            }else{
+                Log.wtf("get current location","Location is disabled");
+                openGPSinSettings();
+            }
+        }else{
+            //request permission
+            Log.wtf("getCurrentLocation","Permission not granted");
+            Toast.makeText(staticContext, "Grant Permission", Toast.LENGTH_SHORT).show();
+            ActivityCompat.requestPermissions(staticActivtity,new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION);
+        }
+    }
+    protected static void locationManagerInitialize(){
+        Log.wtf("locationInitialize","called");
+        locationManager = (LocationManager) staticActivtity.getSystemService(LOCATION_SERVICE);
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                Log.wtf("onLocationChange","Location is changed "+location);
+                myLocation = new LatLng(location.getLatitude(),location.getLongitude());
+                Fragment_truck_map.showLoadingLayout(false,false,"");
+                if(Fragment_truck_map.origin_marker!=null){
+                    Fragment_truck_map.origin_marker.setPosition(myLocation);
+                }
+                Toast.makeText(staticContext,"Location Captured",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+
+            }
+        };
+    }
+    protected static void requestLocationUpdate() {
+        try {
+            locationManagerInitialize();
+            if (ActivityCompat.checkSelfPermission(staticActivtity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            Log.wtf("request Location","Called");
+
+            Fragment_truck_map.showLoadingLayout(true,true,"Getting your location");
+            locationManager.requestLocationUpdates("gps", 10000, 0, locationListener);
+        }catch (Exception e){
+            Toast.makeText(staticContext, e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.wtf("getLocation Error",e.getMessage());
+        }
+    }
+    protected static boolean isLocationPermissionGranted(){
+        int locationCheck = ActivityCompat.checkSelfPermission(staticContext,Manifest.permission.ACCESS_FINE_LOCATION);
+        if(locationCheck == PackageManager.PERMISSION_GRANTED){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public static boolean isLocationEnabled(Context context) {
+        int locationMode = 0;
+        String locationProviders;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+            try {
+                locationMode = Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.LOCATION_MODE);
+
+            } catch (Settings.SettingNotFoundException e) {
+                e.printStackTrace();
+                return false;
+            }
+
+            return locationMode != Settings.Secure.LOCATION_MODE_OFF;
+
+        }else{
+            locationProviders = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+            return !TextUtils.isEmpty(locationProviders);
+        }
+    }
+    protected static void openGPSinSettings(){
+        new android.app.AlertDialog.Builder(staticActivtity)
+                .setTitle("Turn On Location")
+                .setMessage("This Application Requires Location")
+                .setCancelable(false)
+                .setPositiveButton("Turn On", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.wtf("TurnOnGPSTracking","Settings intent is called");
+                        staticActivtity.startActivityForResult(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS),OPEN_GPS_SETTINGS_REQUEST);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.wtf("TurnOnGPSTracking","User clicked Cancel");
+                        Toast.makeText(staticContext, "Locations is required", Toast.LENGTH_SHORT).show();
+                        staticActivtity.finish();
+                    }
+                })
+                .show();
+    }
+    protected void stopLocationListener(){
+        if(locationManager!=null) {
+            locationManager.removeUpdates(locationListener);
+            locationManager=null;
+        }
+    }
+
+
+    //PERMISSION
+    public static void checkPermission() {
+        Log.wtf("CHECKPERMISSION()", "CALLED");
+        getCurrentLocation();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        try{
+
+             if(requestCode == LOCATION_PERMISSION){
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    Log.wtf("permissionResult","Fine Location is granted");
+                    getCurrentLocation();
+                }else{
+                    Log.wtf("permissionResult","Fine Location is NOT granted");
+                    //NOT GRANTED
+                    boolean showRationale = ActivityCompat.shouldShowRequestPermissionRationale(this,
+                            Manifest.permission.ACCESS_FINE_LOCATION);
+                    if(!showRationale){
+                        //USER SELECTED DO NOT SHOW AGAIN
+                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                        builder.setTitle("Allow Permission");
+                        builder.setMessage("You cannot use this app without permission. Please allow the permission.");
+                        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startActivityForResult(new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + BuildConfig.APPLICATION_ID)),OPEN_PERMISSION_REQUEST);
+                            }
+                        });
+                        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(Activity_main_truck.this, "Location permission is required", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        });
+                        builder.show();
+                    }
+                    else{
+
+                    }
+                }
+            }
+        }catch (Exception e){
+            Toast.makeText(Activity_main_truck.this, "Exception Handled ", Toast.LENGTH_SHORT).show();
+            Log.wtf("onPermissionResult:ERROR",e.getMessage());
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+         if(requestCode ==  OPEN_GPS_SETTINGS_REQUEST){
+            Log.wtf("activity result","Result for opening gps location");
+            if(isLocationEnabled(this)){
+                Log.wtf("activity_result","location is not opened");
+                requestLocationUpdate();
+            }else{
+                openGPSinSettings();
+                Log.wtf("activity_result","location is not opened");
+            }
+        }
+        else if(requestCode == OPEN_PERMISSION_REQUEST){
+            if(isLocationPermissionGranted()){
+                getCurrentLocation();
+            }else{
+                finish();
+                Toast.makeText(this, "Permission not granted", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+
 
     @Override
     public void onBackPressed() {
