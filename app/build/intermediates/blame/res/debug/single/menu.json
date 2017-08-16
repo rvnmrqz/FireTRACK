@@ -1,18 +1,18 @@
 [
     {
-        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\menu\\truck_main_menu.xml",
-        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\menu\\truck_main_menu.xml"
+        "merged": "C:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\menu\\listview_popup.xml",
+        "source": "C:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\src\\main\\res\\menu\\listview_popup.xml"
     },
     {
-        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\menu\\listview_popup.xml",
-        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\menu\\listview_popup.xml"
+        "merged": "C:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\menu\\truck_main_menu.xml",
+        "source": "C:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\src\\main\\res\\menu\\truck_main_menu.xml"
     },
     {
-        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\menu\\navigation.xml",
-        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\menu\\navigation.xml"
+        "merged": "C:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\menu\\navigation.xml",
+        "source": "C:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\src\\main\\res\\menu\\navigation.xml"
     },
     {
-        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\menu\\user_main_menu.xml",
-        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\menu\\user_main_menu.xml"
+        "merged": "C:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\menu\\user_main_menu.xml",
+        "source": "C:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\src\\main\\res\\menu\\user_main_menu.xml"
     }
 ]

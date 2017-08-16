@@ -1,7 +1,7 @@
-#Sun Aug 13 20:33:37 CST 2017
-base.0=D\:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_928813ecade220e2271ec116738b344c1e1d0cb0
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=D\:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_8301a09c84399c4632336a6dd7d23f6964e80467\\classes.dex
-base.1=D\:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_8301a09c84399c4632336a6dd7d23f6964e80467
-file.0=D\:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_928813ecade220e2271ec116738b344c1e1d0cb0\\classes.dex
+#Tue Aug 15 13:54:51 CST 2017
+base.0=C\:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_9b5243113b6c062cc3a7df01883ed0731c3dff82
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_85fa9eae4070593d15ab5226f6053712ee305256\\classes.dex
+base.1=C\:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_85fa9eae4070593d15ab5226f6053712ee305256
+file.0=C\:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_9b5243113b6c062cc3a7df01883ed0731c3dff82\\classes.dex

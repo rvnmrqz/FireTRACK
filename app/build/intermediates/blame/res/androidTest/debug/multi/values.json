@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "outputFile": "C:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 96
                 },
                 "from": {
-                    "file": "C:\\Users\\arvin\\.android\\build-cache\\64814f1f83438eb9a5f02e849137a6ae52734ddd\\output\\res\\values\\values.xml",
+                    "file": "C:\\Users\\kim\\.android\\build-cache\\161ea5585e4fb820d40338456ba3a264574b7051\\output\\res\\values\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

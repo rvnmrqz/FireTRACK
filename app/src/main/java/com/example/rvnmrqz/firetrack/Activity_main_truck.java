@@ -668,7 +668,7 @@ public class Activity_main_truck extends AppCompatActivity {
                             Fragment_truck_map.waitingForLocation=true;
                             Fragment_truck_map.animateInitialCameraView(false,destinationLocation);
                         }
-                        Fragment_truck_map.ON_SESSION=true;
+                        Fragment_truck_map.startSession();
                     }
                     deleteIndexFromList(SELECTED_FIRE_REPORT_INDEX);
                 }
@@ -692,7 +692,7 @@ public class Activity_main_truck extends AppCompatActivity {
                         entries = entries+", ";
                     }
                 }
-                Fragment_truck_map.ON_SESSION=false;
+                Fragment_truck_map.stopSession();
                  Log.wtf("updateDeliveredReportsNotif()","Map<String><String>, Query: "+query);
                 params.put("query",query);
                 return params;

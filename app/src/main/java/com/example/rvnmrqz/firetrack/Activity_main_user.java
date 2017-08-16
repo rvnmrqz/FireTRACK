@@ -1130,5 +1130,4 @@ public class Activity_main_user extends AppCompatActivity {
         super.onResume();
         activityResumed();
     }
-
 }

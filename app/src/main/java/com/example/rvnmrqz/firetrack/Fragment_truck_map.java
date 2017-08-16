@@ -27,6 +27,7 @@ import com.akexorcist.googledirection.constant.Language;
 import com.akexorcist.googledirection.constant.TransportMode;
 import com.akexorcist.googledirection.model.Direction;
 import com.akexorcist.googledirection.util.DirectionConverter;
+import com.google.android.gms.auth.firstparty.shared.FACLConfig;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -97,6 +98,9 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
     static int activeRoute=-1;
     ArrayList<LatLng> directionPositionList;
     static ArrayList<LatLng>[] directionPositionLists = new ArrayList[3];
+
+    static LinearLayout finishLayout;
+    Button finishButton;
 
 
     public Fragment_truck_map() {
@@ -216,6 +220,9 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
         r2_imgbtn = (ImageButton) getActivity().findViewById(R.id.route2_ImgBtn);
         r3_imgbtn = (ImageButton) getActivity().findViewById(R.id.route3_ImgBtn);
         routeClickListener();
+
+        finishLayout = (LinearLayout) getActivity().findViewById(R.id.truck_map_finishLayout);
+        finishButton = (Button) getActivity().findViewById(R.id.truck_map_finishButton);
 
         Activity_main_truck.checkPermission();
 
@@ -774,5 +781,37 @@ public class Fragment_truck_map extends Fragment implements OnMapReadyCallback, 
             float value = results[0];
             return value;
         }
+    }
+
+
+    public static void startSession(){
+        ON_SESSION=true;
+        if(confirmationLayout.isShown()){
+            hideConfirmationLayout();
+        }
+        finishLayout.setVisibility(View.VISIBLE);
+    }
+    public static void stopSession(){
+        ON_SESSION= false;
+        anim_down = AnimationUtils.loadAnimation(context,R.anim.slide_down);
+        finishLayout.startAnimation(anim_down);
+        anim_down.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                finishLayout.setVisibility(View.INVISIBLE);
+                resetMapView();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
     }
 }

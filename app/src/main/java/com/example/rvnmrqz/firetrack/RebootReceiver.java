@@ -12,10 +12,10 @@ public class RebootReceiver extends BroadcastReceiver {
 
         SharedPreferences sharedPreferences = context.getSharedPreferences(MySharedPref.SHAREDPREF_NAME,Context.MODE_PRIVATE);
         String logged = sharedPreferences.getString(MySharedPref.LOGGED,"");
-        if(!logged.trim().equals("user")){
+        if(logged.trim().equalsIgnoreCase("user")){
             Intent myIntent = new Intent(context, Service_Notification.class);
             context.startService(myIntent);
-        }else if(!logged.trim().equals("truck")){
+        }else if(logged.trim().equalsIgnoreCase("truck")){
             //Intent myIntent = new Intent(context, Service_Notification.class);
            // context.startService(myIntent);
         }

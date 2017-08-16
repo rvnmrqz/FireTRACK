@@ -1,14 +1,14 @@
 [
     {
-        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
-        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_exit_fullscreen.png",
+        "source": "C:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_exit_fullscreen.png"
     },
     {
-        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher_round.png",
-        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+        "merged": "C:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher_round.png",
+        "source": "C:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "D:\\AS_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_exit_fullscreen.png",
-        "source": "D:\\AS_Projects\\FireTRACK\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_exit_fullscreen.png"
+        "merged": "C:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
+        "source": "C:\\Users\\kim\\Documents\\Android_Projects\\FireTRACK\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     }
 ]

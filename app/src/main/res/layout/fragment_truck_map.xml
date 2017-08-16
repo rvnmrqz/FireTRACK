@@ -177,5 +177,24 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+    <!-- ON SESSION LAYOUT-->
+    <LinearLayout
+        android:id="@+id/truck_map_finishLayout"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/truck_map_finishButton"
+            android:text="finish"
+            android:textColor="@color/colorWhite"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </FrameLayout>

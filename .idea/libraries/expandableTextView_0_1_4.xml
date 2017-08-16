@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="expandableTextView-0.1.4">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/797a494c2b1d740534b1d69368fab6e66c1081df/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/797a494c2b1d740534b1d69368fab6e66c1081df/output/res" />
+      <root url="file://$USER_HOME$/.android/build-cache/ade304ce8cb46ef3c455d320a7aa4b44ce50787a/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/ade304ce8cb46ef3c455d320a7aa4b44ce50787a/output/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
